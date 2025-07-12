@@ -12,6 +12,7 @@ import {
   Puzzle,
   MessageSquare,
   LifeBuoy,
+  Rss,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -22,6 +23,7 @@ const navItems = [
   { href: "/", icon: Home, label: "Overview" },
   { href: "/users", icon: Users, label: "Users" },
   { href: "/chat", icon: MessageSquare, label: "Chat" },
+  { href: "/feed", icon: Rss, label: "Feed" },
   { href: "/billing", icon: Package, label: "Billing" },
   { href: "/reports", icon: LineChart, label: "Reporting" },
   { href: "/integrations", icon: Puzzle, label: "Integrations" },
