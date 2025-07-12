@@ -171,7 +171,7 @@ export function DashboardHeader() {
                 <DropdownMenuLabel>{t('header.themeColor')}</DropdownMenuLabel>
                  <DropdownMenuSeparator />
                 {themes.map((themeItem) => (
-                    <DropdownMenuItem key={themeItem.name} onClick={() => handleColorChange(themeItem.value)}>
+                    <DropdownMenuItem key={themeItem.value} onClick={() => handleColorChange(themeItem.value)}>
                         <div className="flex items-center gap-2">
                            <div className={`h-4 w-4 rounded-full ${themeItem.color}`} />
                            <span>{t(`header.${themeItem.value}`)}</span>
@@ -201,7 +201,7 @@ export function DashboardHeader() {
               <DropdownMenuItem>{t('header.support')}</DropdownMenuItem>
             </Link>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>{t('header.logout')}</DropdownMenuItem>
+            <DropdownMenuItem className="text-destructive focus:text-destructive-foreground">{t('header.logout')}</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
