@@ -37,7 +37,7 @@ import { NovaPanelLogo } from "./icons";
 
 export function DashboardHeader() {
   return (
-    <header className="flex h-14 items-center gap-4 border-b bg-background px-4 lg:h-[60px] lg:px-6">
+    <header className="flex h-14 items-center gap-4 border-b bg-card px-4 lg:h-[60px] lg:px-6">
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="outline" size="icon" className="shrink-0 md:hidden">
@@ -45,7 +45,7 @@ export function DashboardHeader() {
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="flex flex-col bg-background">
+        <SheetContent side="left" className="flex flex-col bg-card">
           <nav className="grid gap-2 text-lg font-medium">
             <Link
               href="#"
@@ -92,7 +92,7 @@ export function DashboardHeader() {
             <Input
               type="search"
               placeholder="Search..."
-              className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
+              className="w-full appearance-none bg-card pl-8 shadow-none md:w-2/3 lg:w-1/3"
             />
           </div>
         </form>
