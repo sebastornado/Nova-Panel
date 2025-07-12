@@ -6,6 +6,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import Image from "next/image"
 import { useLanguage } from "@/context/language-context";
 
+const AzureLogo = () => (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="rounded-lg">
+        <path d="M22.56 12.24L10.32 35.76H2.64L22.56 12.24Z" fill="#0072C6"/>
+        <path d="M22.56 12.24L32.16 35.76H45.36L22.56 12.24Z" fill="#0072C6"/>
+        <path d="M12 35.76H32.16L18.72 23.04L12 35.76Z" fill="#0072C6"/>
+    </svg>
+)
+
 const integrations = [
     { name: 'Salesforce', description: 'Sync your customer data with Salesforce.', logo: 'https://placehold.co/48x48.png', hint: 'crm logo' },
     { name: 'Slack', description: 'Get notifications directly in your Slack channels.', logo: 'https://placehold.co/48x48.png', hint: 'messaging app' },
@@ -13,7 +21,7 @@ const integrations = [
     { name: 'Google Analytics', description: 'Track user behavior with Google Analytics.', logo: 'https://placehold.co/48x48.png', hint: 'analytics logo' },
     { name: 'Mailchimp', description: 'Sync your contacts with Mailchimp lists.', logo: 'https://placehold.co/48x48.png', hint: 'email marketing' },
     { name: 'Stripe', description: 'Manage payments and subscriptions with Stripe.', logo: 'https://placehold.co/48x48.png', hint: 'payment gateway' },
-    { name: 'Azure', description: 'Host your backend services on Microsoft Azure.', logo: 'https://placehold.co/48x48.png', hint: 'cloud service' },
+    { name: 'Azure', description: 'Host your backend services on Microsoft Azure.', logo: <AzureLogo />, hint: 'cloud service' },
     { name: 'Autotask', description: 'Manage your PSA and ticketing with Autotask.', logo: 'https://placehold.co/48x48.png', hint: 'psa tool' },
 ]
 
@@ -29,7 +37,11 @@ export default function IntegrationsPage() {
                 {integrations.map((integration) => (
                     <Card key={integration.name}>
                         <CardHeader className="flex flex-row items-start gap-4 space-y-0">
-                            <Image src={integration.logo} alt={`${integration.name} logo`} width={48} height={48} className="rounded-lg" data-ai-hint={integration.hint} />
+                            {typeof integration.logo === 'string' ? (
+                                <Image src={integration.logo} alt={`${integration.name} logo`} width={48} height={48} className="rounded-lg" data-ai-hint={integration.hint} />
+                            ) : (
+                                integration.logo
+                            )}
                             <div className="flex-1">
                                 <CardTitle>{integration.name}</CardTitle>
                                 <CardDescription>{integration.description}</CardDescription>
