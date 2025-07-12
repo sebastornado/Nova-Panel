@@ -33,6 +33,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.jitterbit.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'knowmax-ai-website.s3.amazonaws.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

@@ -40,7 +40,7 @@ const articles = [
     id: 4,
     title: "Troubleshooting Common Integration Errors",
     description: "This document covers the top 5 most common errors encountered when setting up new integrations and how to resolve them quickly.",
-    image: "https://placehold.co/600x400/FFC107/FFFFFF.png",
+    image: "https://knowmax-ai-website.s3.amazonaws.com/wp-content/uploads/2020/09/19152244/Troubleshooting-support-1.webp",
     hint: "computer hardware",
     author: "Admin",
     date: "July 10, 2024",
