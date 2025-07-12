@@ -253,7 +253,7 @@ export default function OverviewPage() {
               <CardTitle className="font-headline">{t('overview.responseTime')}</CardTitle>
               <CardDescription>{t('overview.responseTimeDescription')}</CardDescription>
             </CardHeader>
-            <CardContent className="flex-1 pb-0">
+            <CardContent className="flex items-center justify-center pb-0">
                <ChartContainer
                 config={{
                     "Under 1h": { label: t('overview.legendUnder1h'), color: "hsl(var(--primary))" },
@@ -267,8 +267,8 @@ export default function OverviewPage() {
                   data={responseTimeData}
                   startAngle={-90}
                   endAngle={270}
-                  innerRadius={80}
-                  outerRadius={110}
+                  innerRadius={60}
+                  outerRadius={80}
                 >
                   <PolarGrid
                     gridType="circle"
@@ -277,10 +277,7 @@ export default function OverviewPage() {
                     className="fill-muted"
                   />
                   <RadialBar dataKey="value" background cornerRadius={10} />
-                  <ChartLegend
-                    content={<ChartLegendContent nameKey="name" className="flex-wrap" />}
-                    className="-translate-y-2 flex-wrap gap-2 [&>*]:basis-1/4 [&>*]:justify-center"
-                  />
+                  <ChartLegend content={<ChartLegendContent nameKey="name" className="flex-col gap-2 items-start" />} />
                 </RadialBarChart>
               </ChartContainer>
             </CardContent>
