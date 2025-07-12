@@ -13,11 +13,11 @@ import { useLanguage } from "@/context/language-context";
 
 // Mock data - in a real app, this would come from a database
 const users = [
-  { name: 'Olivia Martin', email: 'olivia.martin@email.com', role: 'Admin', status: 'Active', avatar: 'https://placehold.co/100x100/A8D8B9/424242.png', hint: 'woman portrait', joined: '2023-01-15', lastLogin: '2024-07-15T10:30:00Z' },
-  { name: 'Jackson Lee', email: 'jackson.lee@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100/E6B3A3/424242.png', hint: 'man portrait', joined: '2023-02-20', lastLogin: '2024-07-14T18:45:00Z' },
-  { name: 'Isabella Nguyen', email: 'isabella.nguyen@email.com', role: 'User', status: 'Inactive', avatar: 'https://placehold.co/100x100/F0E68C/424242.png', hint: 'woman smiling', joined: '2023-03-10', lastLogin: '2024-05-01T11:00:00Z' },
-  { name: 'William Kim', email: 'will@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100/B3E0F2/424242.png', hint: 'man glasses', joined: '2023-04-05', lastLogin: '2024-07-15T09:00:00Z' },
-  { name: 'Sofia Davis', email: 'sofia.davis@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100/D4B4E4/424242.png', hint: 'woman professional', joined: '2023-05-25', lastLogin: '2024-07-12T14:20:00Z' },
+  { name: 'Olivia Martin', email: 'olivia.martin@email.com', role: 'Admin', status: 'Active', avatar: 'https://placehold.co/100x100/A8D8B9/424242.png?text=OM', hint: 'woman portrait', joined: '2023-01-15', lastLogin: '2024-07-15T10:30:00Z' },
+  { name: 'Jackson Lee', email: 'jackson.lee@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100/E6B3A3/424242.png?text=JL', hint: 'man portrait', joined: '2023-02-20', lastLogin: '2024-07-14T18:45:00Z' },
+  { name: 'Isabella Nguyen', email: 'isabella.nguyen@email.com', role: 'User', status: 'Inactive', avatar: 'https://placehold.co/100x100/F0E68C/424242.png?text=IN', hint: 'woman smiling', joined: '2023-03-10', lastLogin: '2024-05-01T11:00:00Z' },
+  { name: 'William Kim', email: 'will@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100/B3E0F2/424242.png?text=WK', hint: 'man glasses', joined: '2023-04-05', lastLogin: '2024-07-15T09:00:00Z' },
+  { name: 'Sofia Davis', email: 'sofia.davis@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100/D4B4E4/424242.png?text=SD', hint: 'woman professional', joined: '2023-05-25', lastLogin: '2024-07-12T14:20:00Z' },
 ];
 
 const recentActivityData = [
