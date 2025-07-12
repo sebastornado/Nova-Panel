@@ -70,12 +70,12 @@ export default function OverviewPage() {
             <CardTitle className="text-sm font-medium">
               {t('overview.totalRevenue')}
             </CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <DollarSign className="h-4 w-4 text-green-500" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$45,231.89</div>
             <p className="text-xs text-muted-foreground">
-              +20.1% {t('overview.fromLastMonth')}
+              <span className="text-green-500 font-medium">+20.1%</span> {t('overview.fromLastMonth')}
             </p>
           </CardContent>
         </Card>
@@ -84,36 +84,36 @@ export default function OverviewPage() {
             <CardTitle className="text-sm font-medium">
               {t('overview.subscriptions')}
             </CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+            <Users className="h-4 w-4 text-blue-500" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">+2350</div>
             <p className="text-xs text-muted-foreground">
-              +180.1% {t('overview.fromLastMonth')}
+              <span className="text-green-500 font-medium">+180.1%</span> {t('overview.fromLastMonth')}
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">{t('overview.sales')}</CardTitle>
-            <CreditCard className="h-4 w-4 text-muted-foreground" />
+            <CreditCard className="h-4 w-4 text-orange-500" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">+12,234</div>
             <p className="text-xs text-muted-foreground">
-              +19% {t('overview.fromLastMonth')}
+              <span className="text-green-500 font-medium">+19%</span> {t('overview.fromLastMonth')}
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">{t('overview.activeNow')}</CardTitle>
-            <Activity className="h-4 w-4 text-muted-foreground" />
+            <Activity className="h-4 w-4 text-violet-500" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">+573</div>
             <p className="text-xs text-muted-foreground">
-              +201 {t('overview.sinceLastHour')}
+              <span className="text-green-500 font-medium">+201</span> {t('overview.sinceLastHour')}
             </p>
           </CardContent>
         </Card>
@@ -155,7 +155,7 @@ export default function OverviewPage() {
                     {t('overview.sale')}
                   </TableCell>
                   <TableCell className="hidden xl:table-column">
-                    <Badge className="text-xs" variant="outline">
+                    <Badge className="text-xs" variant="positive">
                       {t('overview.approved')}
                     </Badge>
                   </TableCell>
@@ -175,7 +175,7 @@ export default function OverviewPage() {
                     {t('overview.refund')}
                   </TableCell>
                   <TableCell className="hidden xl:table-column">
-                    <Badge className="text-xs" variant="outline">
+                    <Badge className="text-xs" variant="destructive">
                       {t('overview.declined')}
                     </Badge>
                   </TableCell>
@@ -195,7 +195,7 @@ export default function OverviewPage() {
                     {t('overview.subscription')}
                   </TableCell>
                   <TableCell className="hidden xl:table-column">
-                    <Badge className="text-xs" variant="outline">
+                    <Badge className="text-xs" variant="positive">
                       {t('overview.approved')}
                     </Badge>
                   </TableCell>
