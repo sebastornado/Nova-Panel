@@ -96,7 +96,7 @@ export default function UsersPage() {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-4">
       <div className="flex items-center">
         <h1 className="text-lg font-semibold md:text-2xl font-headline">Users</h1>
         <div className="ml-auto flex items-center gap-2">
@@ -148,7 +148,7 @@ export default function UsersPage() {
             </Dialog>
         </div>
       </div>
-      <Card className="mt-4">
+      <Card>
         <CardHeader>
           <CardTitle>User Management</CardTitle>
           <CardDescription>
