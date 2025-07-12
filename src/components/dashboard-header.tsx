@@ -181,7 +181,7 @@ export function DashboardHeader() {
           <DropdownMenuTrigger asChild>
             <Button variant="secondary" size="icon" className="rounded-full">
               <Avatar>
-                <AvatarImage src="https://placehold.co/100x100.png" alt="Admin" data-ai-hint="user avatar" />
+                <AvatarImage src="https://placehold.co/100x100/E5E7EB/424242.png?text=AD" alt="Admin" data-ai-hint="user avatar" />
                 <AvatarFallback>AD</AvatarFallback>
               </Avatar>
               <span className="sr-only">Toggle user menu</span>

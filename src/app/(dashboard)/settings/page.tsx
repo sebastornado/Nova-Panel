@@ -34,7 +34,7 @@ export default function SettingsPage() {
                         <CardContent className="space-y-6">
                              <div className="flex items-center gap-4">
                                 <Avatar className="h-20 w-20">
-                                    <AvatarImage src="https://placehold.co/100x100.png" alt="Admin" data-ai-hint="user avatar" />
+                                    <AvatarImage src="https://placehold.co/100x100/E5E7EB/424242.png?text=AD" alt="Admin" data-ai-hint="user avatar" />
                                     <AvatarFallback>AD</AvatarFallback>
                                 </Avatar>
                                 <Button variant="outline">{t('settings.changeAvatar')}</Button>

@@ -158,8 +158,8 @@ export default function ChatPage() {
                                     </div>
                                     {message.sender === 'admin' && (
                                         <Avatar className="h-8 w-8">
-                                             <AvatarImage src="https://placehold.co/100x100.png" alt="Admin" data-ai-hint="user avatar" />
-                                            <AvatarFallback>A</AvatarFallback>
+                                             <AvatarImage src="https://placehold.co/100x100/E5E7EB/424242.png?text=AD" alt="Admin" data-ai-hint="user avatar" />
+                                            <AvatarFallback>AD</AvatarFallback>
                                         </Avatar>
                                      )}
                                 </div>

@@ -263,8 +263,8 @@ export default function TicketsPage() {
                             </div>
                              {message.sender === 'Admin' && (
                                 <Avatar className="h-8 w-8 border">
-                                     <AvatarImage src="https://placehold.co/100x100.png" alt="Admin" data-ai-hint="user avatar" />
-                                    <AvatarFallback>A</AvatarFallback>
+                                     <AvatarImage src="https://placehold.co/100x100/E5E7EB/424242.png?text=AD" alt="Admin" data-ai-hint="user avatar" />
+                                    <AvatarFallback>AD</AvatarFallback>
                                 </Avatar>
                              )}
                         </div>

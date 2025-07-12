@@ -19,7 +19,7 @@ const teamsData = [
         name: 'Tier 1 Support',
         description: 'General customer inquiries',
         members: [
-            { name: 'Admin', avatar: 'https://placehold.co/100x100.png', hint: 'user avatar' },
+            { name: 'Admin', avatar: 'https://placehold.co/100x100/E5E7EB/424242.png?text=AD', hint: 'user avatar' },
             { name: 'Olivia Martin', avatar: 'https://placehold.co/100x100/A8D8B9/424242.png?text=OM', hint: 'woman portrait' },
             { name: 'Jackson Lee', avatar: 'https://placehold.co/100x100/E6B3A3/424242.png?text=JL', hint: 'man portrait' },
         ],
@@ -34,7 +34,7 @@ const teamsData = [
         name: 'Billing Specialists',
         description: 'Payment and subscription issues',
         members: [
-            { name: 'Admin', avatar: 'https://placehold.co/100x100.png', hint: 'user avatar' },
+            { name: 'Admin', avatar: 'https://placehold.co/100x100/E5E7EB/424242.png?text=AD', hint: 'user avatar' },
             { name: 'Sofia Davis', avatar: 'https://placehold.co/100x100/D4B4E4/424242.png?text=SD', hint: 'woman professional' },
         ],
         messages: [
@@ -47,7 +47,7 @@ const teamsData = [
         name: 'Integration Experts',
         description: 'API and third-party integrations',
         members: [
-            { name: 'Admin', avatar: 'https://placehold.co/100x100.png', hint: 'user avatar' },
+            { name: 'Admin', avatar: 'https://placehold.co/100x100/E5E7EB/424242.png?text=AD', hint: 'user avatar' },
             { name: 'William Kim', avatar: 'https://placehold.co/100x100/B3E0F2/424242.png?text=WK', hint: 'man glasses' },
             { name: 'Isabella Nguyen', avatar: 'https://placehold.co/100x100/F0E68C/424242.png?text=IN', hint: 'woman smiling' },
         ],

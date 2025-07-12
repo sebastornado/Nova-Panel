@@ -15,7 +15,7 @@ const initialPosts = [
     id: 1,
     author: {
       name: "Admin",
-      avatar: "https://placehold.co/100x100.png",
+      avatar: "https://placehold.co/100x100/E5E7EB/424242.png?text=AD",
       hint: "user avatar"
     },
     timestamp: "2 hours ago",
@@ -62,7 +62,7 @@ export default function FeedPage() {
             id: posts.length + 1,
             author: {
                 name: "Admin",
-                avatar: "https://placehold.co/100x100.png",
+                avatar: "https://placehold.co/100x100/E5E7EB/424242.png?text=AD",
                 hint: "user avatar",
             },
             timestamp: "Just now",
@@ -86,7 +86,7 @@ export default function FeedPage() {
         <CardHeader>
           <div className="flex items-start gap-4">
             <Avatar>
-                <AvatarImage src="https://placehold.co/100x100.png" alt="Admin" data-ai-hint="user avatar" />
+                <AvatarImage src="https://placehold.co/100x100/E5E7EB/424242.png?text=AD" alt="Admin" data-ai-hint="user avatar" />
                 <AvatarFallback>AD</AvatarFallback>
             </Avatar>
             <div className="flex-1">
