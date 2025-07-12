@@ -148,7 +148,7 @@ export default function ChatPage() {
                                 <div key={message.id} className={cn("flex items-end gap-2", message.sender === 'admin' ? 'justify-end' : 'justify-start')}>
                                      {message.sender === 'user' && (
                                         <Avatar className="h-8 w-8">
-                                            <AvatarImage src={selectedUser.avatar} alt={selectedUser.name} />
+                                            <AvatarImage src={selectedUser.avatar} alt={selectedUser.name} data-ai-hint={selectedUser.hint} />
                                             <AvatarFallback>{selectedUser.name.charAt(0)}</AvatarFallback>
                                         </Avatar>
                                      )}

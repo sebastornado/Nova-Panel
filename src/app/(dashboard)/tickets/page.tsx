@@ -357,4 +357,3 @@ function TicketTable({ tickets, onRowClick, timeSince, getStatusVariant, getPrio
           </Table>
     );
 }
-
