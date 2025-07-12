@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Mail, Phone, Edit, MessageSquare } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // Mock data - in a real app, this would come from a database
 const users = [
@@ -24,6 +25,13 @@ const recentActivity = [
     { action: "Viewed billing page", timestamp: "2024-07-14T09:15:00Z" },
     { action: "Sent a support message", timestamp: "2024-07-13T16:40:00Z" },
 ];
+
+const supportTickets = [
+    { id: 'TKT-001', subject: 'Issue with billing', status: 'Open', lastUpdated: '2024-07-15T12:00:00Z' },
+    { id: 'TKT-002', subject: 'Feature request: Dark mode', status: 'Closed', lastUpdated: '2024-07-10T09:30:00Z' },
+    { id: 'TKT-003', subject: 'Cannot reset password', status: 'In Progress', lastUpdated: '2024-07-16T08:00:00Z' },
+];
+
 
 export default function UserProfilePage({ params }: { params: { email: string } }) {
   const userEmail = decodeURIComponent(params.email);
@@ -48,6 +56,15 @@ export default function UserProfilePage({ params }: { params: { email: string } 
     return Math.floor(seconds) + " seconds ago";
   };
 
+  const getTicketBadgeVariant = (status: string) => {
+    switch (status) {
+        case 'Open': return 'destructive';
+        case 'In Progress': return 'default';
+        case 'Closed': return 'secondary';
+        default: return 'outline';
+    }
+  }
+
 
   return (
     <div className="flex flex-col gap-8">
@@ -67,11 +84,11 @@ export default function UserProfilePage({ params }: { params: { email: string } 
                         <AvatarImage src={user.avatar} alt={user.name} data-ai-hint={user.hint}/>
                         <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
                     </Avatar>
-                    <CardTitle className="font-headline text-2xl">{user.name}</CardTitle>
-                    <CardDescription className="flex items-center gap-2 mt-1">
+                    <h2 className="font-headline text-2xl">{user.name}</h2>
+                    <div className="flex items-center gap-2 mt-1">
                         <Badge variant={user.status === 'Active' ? 'default' : 'secondary'}>{user.status}</Badge>
                         <Badge variant="outline">{user.role}</Badge>
-                    </CardDescription>
+                    </div>
                 </CardContent>
             </Card>
 
@@ -93,30 +110,70 @@ export default function UserProfilePage({ params }: { params: { email: string } 
         </div>
 
         <div className="lg:col-span-2">
-            <Card>
-                <CardHeader>
-                    <CardTitle>Recent Activity</CardTitle>
-                    <CardDescription>A log of the user's most recent actions.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Action</TableHead>
-                                <TableHead className="text-right">Timestamp</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {recentActivity.map((activity, index) => (
-                                <TableRow key={index}>
-                                    <TableCell className="font-medium">{activity.action}</TableCell>
-                                    <TableCell className="text-right text-muted-foreground">{timeSince(activity.timestamp)}</TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </CardContent>
-            </Card>
+            <Tabs defaultValue="activity">
+                <TabsList>
+                    <TabsTrigger value="activity">Recent Activity</TabsTrigger>
+                    <TabsTrigger value="tickets">Support Tickets</TabsTrigger>
+                </TabsList>
+                <TabsContent value="activity">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Activity Log</CardTitle>
+                            <CardDescription>A log of the user's most recent actions.</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Action</TableHead>
+                                        <TableHead className="text-right">Timestamp</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {recentActivity.map((activity, index) => (
+                                        <TableRow key={index}>
+                                            <TableCell className="font-medium">{activity.action}</TableCell>
+                                            <TableCell className="text-right text-muted-foreground">{timeSince(activity.timestamp)}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </CardContent>
+                    </Card>
+                </TabsContent>
+                <TabsContent value="tickets">
+                     <Card>
+                        <CardHeader>
+                            <CardTitle>Support Tickets</CardTitle>
+                            <CardDescription>A history of support tickets filed by the user.</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Ticket ID</TableHead>
+                                        <TableHead>Subject</TableHead>
+                                        <TableHead>Status</TableHead>
+                                        <TableHead className="text-right">Last Updated</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {supportTickets.map((ticket) => (
+                                        <TableRow key={ticket.id}>
+                                            <TableCell className="font-mono text-xs">{ticket.id}</TableCell>
+                                            <TableCell className="font-medium">{ticket.subject}</TableCell>
+                                            <TableCell>
+                                                <Badge variant={getTicketBadgeVariant(ticket.status)}>{ticket.status}</Badge>
+                                            </TableCell>
+                                            <TableCell className="text-right text-muted-foreground">{timeSince(ticket.lastUpdated)}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </CardContent>
+                    </Card>
+                </TabsContent>
+            </Tabs>
         </div>
 
       </div>
