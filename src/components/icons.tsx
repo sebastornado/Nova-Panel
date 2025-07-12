@@ -16,21 +16,19 @@ export function NovaPanelLogo(props: SVGProps<SVGSVGElement>) {
             strokeLinecap="round" 
             strokeLinejoin="round"
         >
-            {/* Face Outline */}
-            <path d="M12 2a10 10 0 0 0-7.75 16.25A10 10 0 0 0 19.75 5.75 9.9 9.9 0 0 0 12 2Z" />
+            {/* Spaceship Body */}
+            <path d="M12 2L8 10h8L12 2z" />
+            <path d="M8 10v6a4 4 0 008 0v-6H8z" />
 
-            {/* Dividing Line */}
-            <path d="M12 2v20" />
+            {/* Wings */}
+            <path d="M6 14s-2 1-2 4h2" />
+            <path d="M18 14s2 1 2 4h-2" />
 
-            {/* Human Side (Left) */}
-            <path d="M8 10a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-1Z" />
-            <path d="M7 15s1.5-1 4-1" />
+            {/* Flame */}
+            <path d="M10 20s-1 2 2 2 2-2 2-2" />
 
-            {/* Robot Side (Right) */}
-            <rect x="15" y="9" width="2" height="4" rx="1" />
-            <path d="M16 13v-1" />
-            <path d="M16 15h.01" />
-            <path d="M14 17h4" />
+            {/* Window */}
+            <circle cx="12" cy="12" r="1" fill="hsl(var(--primary))" />
         </g>
     </svg>
   );
