@@ -33,8 +33,8 @@ const supportTickets = [
 ];
 
 
-export default function UserProfilePage({ params }: { params: { email: string } }) {
-  const userEmail = decodeURIComponent(params.email);
+export default function UserProfilePage({ params: { email } }: { params: { email: string } }) {
+  const userEmail = decodeURIComponent(email);
   const user = users.find((u) => u.email === userEmail);
 
   if (!user) {
@@ -84,11 +84,11 @@ export default function UserProfilePage({ params }: { params: { email: string } 
                         <AvatarImage src={user.avatar} alt={user.name} data-ai-hint={user.hint}/>
                         <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
                     </Avatar>
-                    <h2 className="font-headline text-2xl">{user.name}</h2>
-                    <div className="flex items-center gap-2 mt-1">
+                    <CardTitle>{user.name}</CardTitle>
+                    <CardDescription className="flex items-center gap-2 mt-1">
                         <Badge variant={user.status === 'Active' ? 'default' : 'secondary'}>{user.status}</Badge>
                         <Badge variant="outline">{user.role}</Badge>
-                    </div>
+                    </CardDescription>
                 </CardContent>
             </Card>
 
