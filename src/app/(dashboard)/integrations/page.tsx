@@ -7,11 +7,10 @@ import Image from "next/image"
 import { useLanguage } from "@/context/language-context";
 
 const AzureLogo = () => (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="rounded-lg">
-        <path d="M28.823 20.706L18.618 36h-7.236L28.823 20.706z" fill="#0072c6" />
-        <path d="M28.823 20.706L18.618 36h7.235l11.412-15.294h-8.442z" fill="#32c5ff" />
-        <path d="M18.823 12L7.41 36h7.236l2.353-8.118l11.824-15.882H18.823z" fill="#88d8ff" />
-        <path d="M29.176 12h11.412L28.823 36h-7.235L29.176 12z" fill="#0072c6" />
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="rounded-lg">
+        <path d="M13.2539 3.88281L6.00001 15.8281H10.1914L13.2539 10.9336V3.88281Z" fill="#0078D4"/>
+        <path d="M14.0352 10.1367L10.1875 15.8281H18L14.0352 10.1367Z" fill="#0078D4"/>
+        <path d="M9.42188 16.6172L13.2539 20.1172V11.7148L9.42188 16.6172Z" fill="#50E6FF"/>
     </svg>
 )
 
