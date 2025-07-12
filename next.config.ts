@@ -21,6 +21,12 @@ const nextConfig: NextConfig = {
         hostname: 'images.stripeassets.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.theconversation.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
