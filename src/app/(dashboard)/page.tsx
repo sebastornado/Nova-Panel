@@ -39,26 +39,36 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
 } from "@/components/ui/chart"
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis, RadialBar, RadialBarChart, PolarGrid } from "recharts"
 import Link from "next/link"
 import { useLanguage } from "@/context/language-context";
 
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
+const ticketResolutionData = [
+  { day: "Mon", tickets: 8 },
+  { day: "Tue", tickets: 12 },
+  { day: "Wed", tickets: 15 },
+  { day: "Thu", tickets: 7 },
+  { day: "Fri", tickets: 11 },
+  { day: "Sat", tickets: 4 },
+  { day: "Sun", tickets: 2 },
 ];
 
-const chartConfig = {
-  desktop: {
-    label: "Desktop",
+const ticketResolutionConfig = {
+  tickets: {
+    label: "Tickets",
     color: "hsl(var(--primary))",
   },
 };
+
+const responseTimeData = [
+  { name: '>8h', value: 10, fill: "hsl(var(--destructive))" },
+  { name: '4-8h', value: 15, fill: "hsl(var(--secondary))" },
+  { name: '1-4h', value: 25, fill: "hsl(var(--accent))" },
+  { name: '<1h', value: 50, fill: "hsl(var(--primary))" },
+];
 
 export default function OverviewPage() {
   const { t } = useLanguage();
@@ -121,9 +131,9 @@ export default function OverviewPage() {
       <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
         <Card className="xl:col-span-2">
           <CardHeader>
-            <CardTitle className="font-headline">{t('overview.transactions')}</CardTitle>
+            <CardTitle className="font-headline">{t('overview.recentTickets')}</CardTitle>
             <CardDescription>
-              {t('overview.recentTransactions')}
+              {t('overview.recentTicketsDescription')}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -132,7 +142,7 @@ export default function OverviewPage() {
                 <TableRow>
                   <TableHead>{t('overview.customer')}</TableHead>
                   <TableHead className="hidden xl:table-column">
-                    {t('overview.type')}
+                    {t('overview.subject')}
                   </TableHead>
                   <TableHead className="hidden xl:table-column">
                     {t('overview.status')}
@@ -140,7 +150,7 @@ export default function OverviewPage() {
                   <TableHead className="hidden xl:table-column">
                     {t('overview.date')}
                   </TableHead>
-                  <TableHead className="text-right">{t('overview.amount')}</TableHead>
+                  <TableHead className="text-right">{t('overview.priority')}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -152,17 +162,17 @@ export default function OverviewPage() {
                     </div>
                   </TableCell>
                   <TableCell className="hidden xl:table-column">
-                    {t('overview.sale')}
+                    {t('overview.subjectBilling')}
                   </TableCell>
                   <TableCell className="hidden xl:table-column">
-                    <Badge className="text-xs" variant="positive">
-                      {t('overview.approved')}
+                    <Badge variant="default">
+                      {t('overview.statusInProgress')}
                     </Badge>
                   </TableCell>
                   <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
                     2023-06-23
                   </TableCell>
-                  <TableCell className="text-right">$250.00</TableCell>
+                  <TableCell className="text-right">{t('overview.priorityHigh')}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>
@@ -172,17 +182,17 @@ export default function OverviewPage() {
                     </div>
                   </TableCell>
                   <TableCell className="hidden xl:table-column">
-                    {t('overview.refund')}
+                     {t('overview.subjectPassword')}
                   </TableCell>
                   <TableCell className="hidden xl:table-column">
-                    <Badge className="text-xs" variant="destructive">
-                      {t('overview.declined')}
+                    <Badge variant="positive">
+                      {t('overview.statusResolved')}
                     </Badge>
                   </TableCell>
                   <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
                     2023-06-24
                   </TableCell>
-                  <TableCell className="text-right">$150.00</TableCell>
+                  <TableCell className="text-right">{t('overview.priorityMedium')}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>
@@ -192,52 +202,85 @@ export default function OverviewPage() {
                     </div>
                   </TableCell>
                   <TableCell className="hidden xl:table-column">
-                    {t('overview.subscription')}
+                    {t('overview.subjectApi')}
                   </TableCell>
                   <TableCell className="hidden xl:table-column">
-                    <Badge className="text-xs" variant="positive">
-                      {t('overview.approved')}
+                     <Badge variant="destructive">
+                      {t('overview.statusOpen')}
                     </Badge>
                   </TableCell>
                   <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
                     2023-06-25
                   </TableCell>
-                  <TableCell className="text-right">$350.00</TableCell>
+                  <TableCell className="text-right">{t('overview.priorityHigh')}</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
           </CardContent>
         </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className="font-headline">{t('overview.recentSales')}</CardTitle>
-            <CardDescription>{t('overview.salesThisMonth')}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={chartConfig} className="h-[200px] w-full">
-              <BarChart accessibilityLayer data={chartData}>
-                <CartesianGrid vertical={false} />
-                <XAxis
-                  dataKey="month"
-                  tickLine={false}
-                  tickMargin={10}
-                  axisLine={false}
-                  tickFormatter={(value) => value.slice(0, 3)}
-                />
-                 <YAxis
+        <div className="space-y-4">
+          <Card>
+            <CardHeader>
+              <CardTitle className="font-headline">{t('overview.ticketsResolved')}</CardTitle>
+              <CardDescription>{t('overview.ticketsResolvedDescription')}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={ticketResolutionConfig} className="h-[200px] w-full">
+                <BarChart accessibilityLayer data={ticketResolutionData}>
+                  <CartesianGrid vertical={false} />
+                  <XAxis
+                    dataKey="day"
                     tickLine={false}
-                    axisLine={false}
                     tickMargin={10}
+                    axisLine={false}
                   />
-                <ChartTooltip
-                  cursor={false}
-                  content={<ChartTooltipContent indicator="dot" />}
-                />
-                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-              </BarChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
+                  <YAxis
+                      tickLine={false}
+                      axisLine={false}
+                      tickMargin={10}
+                    />
+                  <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent indicator="dot" />}
+                  />
+                  <Bar dataKey="tickets" fill="var(--color-tickets)" radius={8} />
+                </BarChart>
+              </ChartContainer>
+            </CardContent>
+          </Card>
+           <Card>
+            <CardHeader>
+              <CardTitle className="font-headline">{t('overview.responseTime')}</CardTitle>
+              <CardDescription>{t('overview.responseTimeDescription')}</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-1 pb-0">
+               <ChartContainer
+                config={{}}
+                className="mx-auto aspect-square h-[250px]"
+              >
+                <RadialBarChart
+                  data={responseTimeData}
+                  startAngle={-90}
+                  endAngle={270}
+                  innerRadius={80}
+                  outerRadius={110}
+                >
+                  <PolarGrid
+                    gridType="circle"
+                    radialLines={false}
+                    stroke="none"
+                    className="fill-muted"
+                  />
+                  <RadialBar dataKey="value" background cornerRadius={10} />
+                  <ChartLegend
+                    content={<ChartLegendContent nameKey="name" className="flex-wrap" />}
+                    className="-translate-y-2 flex-wrap gap-2 [&>*]:basis-1/4 [&>*]:justify-center"
+                  />
+                </RadialBarChart>
+              </ChartContainer>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </>
   )
