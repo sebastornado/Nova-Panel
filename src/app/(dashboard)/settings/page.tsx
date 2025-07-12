@@ -1,29 +1,34 @@
+
+"use client";
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { useLanguage } from "@/context/language-context";
 
 export default function SettingsPage() {
+    const { t } = useLanguage();
     return (
         <div className="flex flex-col gap-8">
             <div>
-                <h1 className="text-lg font-semibold md:text-2xl font-headline">Settings</h1>
-                <p className="text-muted-foreground">Manage your account and workspace settings.</p>
+                <h1 className="text-lg font-semibold md:text-2xl font-headline">{t('settings.title')}</h1>
+                <p className="text-muted-foreground">{t('settings.description')}</p>
             </div>
             <Tabs defaultValue="profile" className="w-full">
                 <TabsList className="grid w-full grid-cols-3">
-                    <TabsTrigger value="profile">Profile</TabsTrigger>
-                    <TabsTrigger value="workspace">Workspace</TabsTrigger>
-                    <TabsTrigger value="api">API Keys</TabsTrigger>
+                    <TabsTrigger value="profile">{t('settings.profileTab')}</TabsTrigger>
+                    <TabsTrigger value="workspace">{t('settings.workspaceTab')}</TabsTrigger>
+                    <TabsTrigger value="api">{t('settings.apiTab')}</TabsTrigger>
                 </TabsList>
                 <TabsContent value="profile">
                     <Card>
                         <CardHeader>
-                            <CardTitle>My Profile</CardTitle>
+                            <CardTitle>{t('settings.myProfile')}</CardTitle>
                             <CardDescription>
-                                Make changes to your public information here. Click save when you're done.
+                                {t('settings.myProfileDescription')}
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-6">
@@ -32,61 +37,61 @@ export default function SettingsPage() {
                                     <AvatarImage src="https://placehold.co/100x100.png" alt="Admin" data-ai-hint="user avatar" />
                                     <AvatarFallback>AD</AvatarFallback>
                                 </Avatar>
-                                <Button variant="outline">Change Avatar</Button>
+                                <Button variant="outline">{t('settings.changeAvatar')}</Button>
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="name">Name</Label>
+                                <Label htmlFor="name">{t('settings.nameLabel')}</Label>
                                 <Input id="name" defaultValue="Admin" />
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="email">Email</Label>
+                                <Label htmlFor="email">{t('settings.emailLabel')}</Label>
                                 <Input id="email" type="email" defaultValue="admin@novapanel.io" />
                             </div>
                         </CardContent>
                         <CardFooter>
-                            <Button>Save Changes</Button>
+                            <Button>{t('settings.saveChanges')}</Button>
                         </CardFooter>
                     </Card>
                 </TabsContent>
                 <TabsContent value="workspace">
                     <Card>
                         <CardHeader>
-                            <CardTitle>Workspace</CardTitle>
+                            <CardTitle>{t('settings.workspace')}</CardTitle>
                             <CardDescription>
-                                Manage your workspace settings.
+                                {t('settings.workspaceDescription')}
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-4">
                             <div className="space-y-2">
-                                <Label htmlFor="workspace-name">Workspace Name</Label>
+                                <Label htmlFor="workspace-name">{t('settings.workspaceNameLabel')}</Label>
                                 <Input id="workspace-name" defaultValue="Nova Inc." />
                             </div>
                         </CardContent>
                          <CardFooter>
-                            <Button>Save Changes</Button>
+                            <Button>{t('settings.saveChanges')}</Button>
                         </CardFooter>
                     </Card>
                 </TabsContent>
                 <TabsContent value="api">
                     <Card>
                         <CardHeader>
-                            <CardTitle>API Keys</CardTitle>
+                            <CardTitle>{t('settings.apiKeys')}</CardTitle>
                             <CardDescription>
-                                Manage your API keys for integrations.
+                                {t('settings.apiKeysDescription')}
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-4">
                             <div className="space-y-2">
-                                <Label htmlFor="api-key">Public Key</Label>
+                                <Label htmlFor="api-key">{t('settings.publicKeyLabel')}</Label>
                                 <Input id="api-key" defaultValue="pk_test_************************" readOnly/>
                             </div>
                              <div className="space-y-2">
-                                <Label htmlFor="secret-key">Secret Key</Label>
+                                <Label htmlFor="secret-key">{t('settings.secretKeyLabel')}</Label>
                                 <Input id="secret-key" type="password" defaultValue="sk_test_************************" readOnly/>
                             </div>
                         </CardContent>
                         <CardFooter>
-                            <Button>Generate New Key</Button>
+                            <Button>{t('settings.generateNewKey')}</Button>
                         </CardFooter>
                     </Card>
                 </TabsContent>

@@ -1,8 +1,12 @@
+
+"use client";
+
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { PlusCircle } from "lucide-react";
+import { useLanguage } from "@/context/language-context";
 
 const articles = [
   {
@@ -44,16 +48,17 @@ const articles = [
 ];
 
 export default function DocumentationPage() {
+  const { t } = useLanguage();
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-lg font-semibold md:text-2xl font-headline">Technical Documentation</h1>
-          <p className="text-muted-foreground">A knowledge base built from real-world ticket resolutions.</p>
+          <h1 className="text-lg font-semibold md:text-2xl font-headline">{t('documentation.title')}</h1>
+          <p className="text-muted-foreground">{t('documentation.description')}</p>
         </div>
         <Button>
             <PlusCircle className="mr-2 h-4 w-4" />
-            New Article
+            {t('documentation.newArticleButton')}
         </Button>
       </div>
 

@@ -9,6 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Mail, Phone, Edit, MessageSquare } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useLanguage } from "@/context/language-context";
 
 // Mock data - in a real app, this would come from a database
 const users = [
@@ -19,21 +20,22 @@ const users = [
   { name: 'Sofia Davis', email: 'sofia.davis@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100.png', hint: 'woman professional', joined: '2023-05-25', lastLogin: '2024-07-12T14:20:00Z' },
 ];
 
-const recentActivity = [
-    { action: "Logged in", timestamp: "2024-07-15T10:30:00Z" },
-    { action: "Updated profile settings", timestamp: "2024-07-14T11:05:00Z" },
-    { action: "Viewed billing page", timestamp: "2024-07-14T09:15:00Z" },
-    { action: "Sent a support message", timestamp: "2024-07-13T16:40:00Z" },
+const recentActivityData = [
+    { actionKey: "loggedInAction", timestamp: "2024-07-15T10:30:00Z" },
+    { actionKey: "updatedProfileAction", timestamp: "2024-07-14T11:05:00Z" },
+    { actionKey: "viewedBillingAction", timestamp: "2024-07-14T09:15:00Z" },
+    { actionKey: "sentSupportMessageAction", timestamp: "2024-07-13T16:40:00Z" },
 ];
 
-const supportTickets = [
-    { id: 'TKT-001', subject: 'Issue with billing', status: 'Open', lastUpdated: '2024-07-15T12:00:00Z' },
-    { id: 'TKT-002', subject: 'Feature request: Dark mode', status: 'Closed', lastUpdated: '2024-07-10T09:30:00Z' },
-    { id: 'TKT-003', subject: 'Cannot reset password', status: 'In Progress', lastUpdated: '2024-07-16T08:00:00Z' },
+const supportTicketsData = [
+    { id: 'TKT-001', subjectKey: 'ticketSubjectBilling', status: 'Open', lastUpdated: '2024-07-15T12:00:00Z' },
+    { id: 'TKT-002', subjectKey: 'ticketSubjectFeature', status: 'Closed', lastUpdated: '2024-07-10T09:30:00Z' },
+    { id: 'TKT-003', subjectKey: 'ticketSubjectPassword', status: 'In Progress', lastUpdated: '2024-07-16T08:00:00Z' },
 ];
 
 
 export default function UserProfilePage({ params: { email } }: { params: { email: string } }) {
+  const { t } = useLanguage();
   const userEmail = decodeURIComponent(email);
   const user = users.find((u) => u.email === userEmail);
 
@@ -65,14 +67,23 @@ export default function UserProfilePage({ params: { email } }: { params: { email
     }
   }
 
+  const getTicketStatusKey = (status: string) => {
+    switch (status) {
+        case 'Open': return 'statusOpen';
+        case 'In Progress': return 'statusInProgress';
+        case 'Closed': return 'statusClosed';
+        default: return 'statusOpen';
+    }
+  }
+
 
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-lg font-semibold md:text-2xl font-headline">User Profile</h1>
+        <h1 className="text-lg font-semibold md:text-2xl font-headline">{t('userProfile.title')}</h1>
         <div className="flex gap-2">
-            <Button variant="outline"><MessageSquare className="mr-2 h-4 w-4" /> Message</Button>
-            <Button><Edit className="mr-2 h-4 w-4" /> Edit Profile</Button>
+            <Button variant="outline"><MessageSquare className="mr-2 h-4 w-4" /> {t('userProfile.message')}</Button>
+            <Button><Edit className="mr-2 h-4 w-4" /> {t('userProfile.editProfile')}</Button>
         </div>
       </div>
 
@@ -86,15 +97,15 @@ export default function UserProfilePage({ params: { email } }: { params: { email
                     </Avatar>
                     <CardTitle>{user.name}</CardTitle>
                     <CardDescription className="flex items-center gap-2 mt-1">
-                        <Badge variant={user.status === 'Active' ? 'default' : 'secondary'}>{user.status}</Badge>
-                        <Badge variant="outline">{user.role}</Badge>
+                        <Badge variant={user.status === 'Active' ? 'default' : 'secondary'}>{t(`users.${user.status.toLowerCase()}Status`)}</Badge>
+                        <Badge variant="outline">{t(`users.${user.role.toLowerCase()}Role`)}</Badge>
                     </CardDescription>
                 </CardContent>
             </Card>
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Contact Information</CardTitle>
+                    <CardTitle>{t('userProfile.contactInfo')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                     <div className="flex items-center gap-3">
@@ -103,7 +114,7 @@ export default function UserProfilePage({ params: { email } }: { params: { email
                     </div>
                     <div className="flex items-center gap-3">
                         <Phone className="h-5 w-5 text-muted-foreground" />
-                        <span className="text-sm text-muted-foreground">Not provided</span>
+                        <span className="text-sm text-muted-foreground">{t('userProfile.notProvided')}</span>
                     </div>
                 </CardContent>
             </Card>
@@ -112,27 +123,27 @@ export default function UserProfilePage({ params: { email } }: { params: { email
         <div className="lg:col-span-2">
             <Tabs defaultValue="activity">
                 <TabsList>
-                    <TabsTrigger value="activity">Recent Activity</TabsTrigger>
-                    <TabsTrigger value="tickets">Support Tickets</TabsTrigger>
+                    <TabsTrigger value="activity">{t('userProfile.recentActivityTab')}</TabsTrigger>
+                    <TabsTrigger value="tickets">{t('userProfile.supportTicketsTab')}</TabsTrigger>
                 </TabsList>
                 <TabsContent value="activity">
                     <Card>
                         <CardHeader>
-                            <CardTitle>Activity Log</CardTitle>
-                            <CardDescription>A log of the user's most recent actions.</CardDescription>
+                            <CardTitle>{t('userProfile.activityLog')}</CardTitle>
+                            <CardDescription>{t('userProfile.activityLogDescription')}</CardDescription>
                         </CardHeader>
                         <CardContent>
                             <Table>
                                 <TableHeader>
                                     <TableRow>
-                                        <TableHead>Action</TableHead>
-                                        <TableHead className="text-right">Timestamp</TableHead>
+                                        <TableHead>{t('userProfile.actionColumn')}</TableHead>
+                                        <TableHead className="text-right">{t('userProfile.timestampColumn')}</TableHead>
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
-                                    {recentActivity.map((activity, index) => (
+                                    {recentActivityData.map((activity, index) => (
                                         <TableRow key={index}>
-                                            <TableCell className="font-medium">{activity.action}</TableCell>
+                                            <TableCell className="font-medium">{t(`userProfile.${activity.actionKey}`)}</TableCell>
                                             <TableCell className="text-right text-muted-foreground">{timeSince(activity.timestamp)}</TableCell>
                                         </TableRow>
                                     ))}
@@ -144,26 +155,26 @@ export default function UserProfilePage({ params: { email } }: { params: { email
                 <TabsContent value="tickets">
                      <Card>
                         <CardHeader>
-                            <CardTitle>Support Tickets</CardTitle>
-                            <CardDescription>A history of support tickets filed by the user.</CardDescription>
+                            <CardTitle>{t('userProfile.supportTickets')}</CardTitle>
+                            <CardDescription>{t('userProfile.supportTicketsDescription')}</CardDescription>
                         </CardHeader>
                         <CardContent>
                             <Table>
                                 <TableHeader>
                                     <TableRow>
-                                        <TableHead>Ticket ID</TableHead>
-                                        <TableHead>Subject</TableHead>
-                                        <TableHead>Status</TableHead>
-                                        <TableHead className="text-right">Last Updated</TableHead>
+                                        <TableHead>{t('userProfile.ticketIdColumn')}</TableHead>
+                                        <TableHead>{t('userProfile.subjectColumn')}</TableHead>
+                                        <TableHead>{t('userProfile.statusColumn')}</TableHead>
+                                        <TableHead className="text-right">{t('userProfile.lastUpdatedColumn')}</TableHead>
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
-                                    {supportTickets.map((ticket) => (
+                                    {supportTicketsData.map((ticket) => (
                                         <TableRow key={ticket.id}>
                                             <TableCell className="font-mono text-xs">{ticket.id}</TableCell>
-                                            <TableCell className="font-medium">{ticket.subject}</TableCell>
+                                            <TableCell className="font-medium">{t(`userProfile.${ticket.subjectKey}`)}</TableCell>
                                             <TableCell>
-                                                <Badge variant={getTicketBadgeVariant(ticket.status)}>{ticket.status}</Badge>
+                                                <Badge variant={getTicketBadgeVariant(ticket.status)}>{t(`userProfile.${getTicketStatusKey(ticket.status)}`)}</Badge>
                                             </TableCell>
                                             <TableCell className="text-right text-muted-foreground">{timeSince(ticket.lastUpdated)}</TableCell>
                                         </TableRow>

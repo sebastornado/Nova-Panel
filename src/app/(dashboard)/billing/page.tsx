@@ -1,8 +1,12 @@
+
+"use client";
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { Download } from "lucide-react"
+import { useLanguage } from "@/context/language-context";
 
 const invoices = [
     { id: 'INV-005', date: '2023-10-25', amount: '$59.00', status: 'Paid' },
@@ -13,35 +17,43 @@ const invoices = [
 ]
 
 export default function BillingPage() {
+    const { t } = useLanguage();
+    
+    const getStatusText = (status: string) => {
+        if (status === 'Paid') return t('billing.paidStatus');
+        if (status === 'Overdue') return t('billing.overdueStatus');
+        return status;
+    }
+
     return (
         <div className="flex flex-col gap-8">
              <div>
-                <h1 className="text-lg font-semibold md:text-2xl font-headline">Billing</h1>
-                <p className="text-muted-foreground">Manage your subscription, payment methods, and view your invoice history.</p>
+                <h1 className="text-lg font-semibold md:text-2xl font-headline">{t('billing.title')}</h1>
+                <p className="text-muted-foreground">{t('billing.description')}</p>
             </div>
             
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <Card>
                     <CardHeader>
-                        <CardTitle>Current Plan</CardTitle>
-                        <CardDescription>You are on the Pro plan.</CardDescription>
+                        <CardTitle>{t('billing.currentPlan')}</CardTitle>
+                        <CardDescription>{t('billing.currentPlanDescription')}</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <div className="space-y-2">
                             <h3 className="text-2xl font-bold">$59/month</h3>
-                            <p className="text-sm text-muted-foreground">Billed monthly. Your next payment is on November 25, 2023.</p>
+                            <p className="text-sm text-muted-foreground">{t('billing.nextPayment')}</p>
                         </div>
                     </CardContent>
                     <CardFooter className="flex justify-between">
-                        <Button variant="outline">Change Plan</Button>
-                        <Button variant="ghost">Cancel Subscription</Button>
+                        <Button variant="outline">{t('billing.changePlan')}</Button>
+                        <Button variant="ghost">{t('billing.cancelSubscription')}</Button>
                     </CardFooter>
                 </Card>
 
                 <Card>
                     <CardHeader>
-                        <CardTitle>Payment Method</CardTitle>
-                        <CardDescription>The card that will be charged for your subscription.</CardDescription>
+                        <CardTitle>{t('billing.paymentMethod')}</CardTitle>
+                        <CardDescription>{t('billing.paymentMethodDescription')}</CardDescription>
                     </CardHeader>
                     <CardContent>
                        <div className="flex items-center gap-4">
@@ -55,25 +67,25 @@ export default function BillingPage() {
                        </div>
                     </CardContent>
                     <CardFooter>
-                        <Button>Update Payment Method</Button>
+                        <Button>{t('billing.updatePaymentMethod')}</Button>
                     </CardFooter>
                 </Card>
             </div>
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Invoice History</CardTitle>
-                    <CardDescription>View and download your past invoices.</CardDescription>
+                    <CardTitle>{t('billing.invoiceHistory')}</CardTitle>
+                    <CardDescription>{t('billing.invoiceHistoryDescription')}</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead>Invoice</TableHead>
-                                <TableHead>Date</TableHead>
-                                <TableHead>Amount</TableHead>
-                                <TableHead>Status</TableHead>
-                                <TableHead className="text-right">Action</TableHead>
+                                <TableHead>{t('billing.invoiceColumn')}</TableHead>
+                                <TableHead>{t('billing.dateColumn')}</TableHead>
+                                <TableHead>{t('billing.amountColumn')}</TableHead>
+                                <TableHead>{t('billing.statusColumn')}</TableHead>
+                                <TableHead className="text-right">{t('billing.actionColumn')}</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -83,12 +95,12 @@ export default function BillingPage() {
                                     <TableCell>{invoice.date}</TableCell>
                                     <TableCell>{invoice.amount}</TableCell>
                                     <TableCell>
-                                        <Badge variant={invoice.status === 'Paid' ? 'default' : 'destructive'}>{invoice.status}</Badge>
+                                        <Badge variant={invoice.status === 'Paid' ? 'default' : 'destructive'}>{getStatusText(invoice.status)}</Badge>
                                     </TableCell>
                                     <TableCell className="text-right">
                                         <Button variant="outline" size="icon">
                                             <Download className="h-4 w-4" />
-                                            <span className="sr-only">Download invoice</span>
+                                            <span className="sr-only">{t('billing.downloadInvoice')}</span>
                                         </Button>
                                     </TableCell>
                                 </TableRow>

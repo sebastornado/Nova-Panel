@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowUp, ArrowDown, MessageSquare, Send } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { useLanguage } from "@/context/language-context";
 
 const initialPosts = [
   {
@@ -50,6 +51,7 @@ const initialPosts = [
 
 
 export default function FeedPage() {
+    const { t } = useLanguage();
     const [posts, setPosts] = useState(initialPosts);
     const [newPostContent, setNewPostContent] = useState("");
 
@@ -76,8 +78,8 @@ export default function FeedPage() {
   return (
     <div className="flex flex-col gap-8">
        <div>
-        <h1 className="text-lg font-semibold md:text-2xl font-headline">Team Feed</h1>
-        <p className="text-muted-foreground">Ask questions, share knowledge, and stay connected with your team.</p>
+        <h1 className="text-lg font-semibold md:text-2xl font-headline">{t('feed.title')}</h1>
+        <p className="text-muted-foreground">{t('feed.description')}</p>
       </div>
 
       <Card>
@@ -89,7 +91,7 @@ export default function FeedPage() {
             </Avatar>
             <div className="flex-1">
                  <Textarea
-                    placeholder="What's on your mind?"
+                    placeholder={t('feed.newPostPlaceholder')}
                     className="bg-muted border-0 focus-visible:ring-1 focus-visible:ring-ring"
                     rows={3}
                     value={newPostContent}
@@ -102,7 +104,7 @@ export default function FeedPage() {
           <div className="flex justify-end">
             <Button onClick={handlePostSubmit}>
                 <Send className="mr-2 h-4 w-4" />
-                Post
+                {t('feed.postButton')}
             </Button>
           </div>
         </CardContent>
@@ -137,7 +139,7 @@ export default function FeedPage() {
                              <div className="flex items-center gap-4 mt-4">
                                 <Button variant="ghost" className="text-muted-foreground">
                                     <MessageSquare className="mr-2 h-4 w-4" />
-                                    {post.comments} Comments
+                                    {post.comments} {t('feed.comments')}
                                 </Button>
                             </div>
                         </div>

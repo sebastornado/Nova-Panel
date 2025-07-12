@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -41,6 +42,7 @@ import {
 } from "@/components/ui/chart"
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
 import Link from "next/link"
+import { useLanguage } from "@/context/language-context";
 
 const chartData = [
   { month: "January", desktop: 186 },
@@ -59,58 +61,59 @@ const chartConfig = {
 };
 
 export default function OverviewPage() {
+  const { t } = useLanguage();
   return (
     <>
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Total Revenue
+              {t('overview.totalRevenue')}
             </CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$45,231.89</div>
             <p className="text-xs text-muted-foreground">
-              +20.1% from last month
+              +20.1% {t('overview.fromLastMonth')}
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Subscriptions
+              {t('overview.subscriptions')}
             </CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">+2350</div>
             <p className="text-xs text-muted-foreground">
-              +180.1% from last month
+              +180.1% {t('overview.fromLastMonth')}
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Sales</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('overview.sales')}</CardTitle>
             <CreditCard className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">+12,234</div>
             <p className="text-xs text-muted-foreground">
-              +19% from last month
+              +19% {t('overview.fromLastMonth')}
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Now</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('overview.activeNow')}</CardTitle>
             <Activity className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">+573</div>
             <p className="text-xs text-muted-foreground">
-              +201 since last hour
+              +201 {t('overview.sinceLastHour')}
             </p>
           </CardContent>
         </Card>
@@ -118,26 +121,26 @@ export default function OverviewPage() {
       <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
         <Card className="xl:col-span-2">
           <CardHeader>
-            <CardTitle className="font-headline">Transactions</CardTitle>
+            <CardTitle className="font-headline">{t('overview.transactions')}</CardTitle>
             <CardDescription>
-              Recent transactions from your store.
+              {t('overview.recentTransactions')}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Customer</TableHead>
+                  <TableHead>{t('overview.customer')}</TableHead>
                   <TableHead className="hidden xl:table-column">
-                    Type
+                    {t('overview.type')}
                   </TableHead>
                   <TableHead className="hidden xl:table-column">
-                    Status
+                    {t('overview.status')}
                   </TableHead>
                   <TableHead className="hidden xl:table-column">
-                    Date
+                    {t('overview.date')}
                   </TableHead>
-                  <TableHead className="text-right">Amount</TableHead>
+                  <TableHead className="text-right">{t('overview.amount')}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -149,11 +152,11 @@ export default function OverviewPage() {
                     </div>
                   </TableCell>
                   <TableCell className="hidden xl:table-column">
-                    Sale
+                    {t('overview.sale')}
                   </TableCell>
                   <TableCell className="hidden xl:table-column">
                     <Badge className="text-xs" variant="outline">
-                      Approved
+                      {t('overview.approved')}
                     </Badge>
                   </TableCell>
                   <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
@@ -169,11 +172,11 @@ export default function OverviewPage() {
                     </div>
                   </TableCell>
                   <TableCell className="hidden xl:table-column">
-                    Refund
+                    {t('overview.refund')}
                   </TableCell>
                   <TableCell className="hidden xl:table-column">
                     <Badge className="text-xs" variant="outline">
-                      Declined
+                      {t('overview.declined')}
                     </Badge>
                   </TableCell>
                   <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
@@ -189,11 +192,11 @@ export default function OverviewPage() {
                     </div>
                   </TableCell>
                   <TableCell className="hidden xl:table-column">
-                    Subscription
+                    {t('overview.subscription')}
                   </TableCell>
                   <TableCell className="hidden xl:table-column">
                     <Badge className="text-xs" variant="outline">
-                      Approved
+                      {t('overview.approved')}
                     </Badge>
                   </TableCell>
                   <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
@@ -207,8 +210,8 @@ export default function OverviewPage() {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle className="font-headline">Recent Sales</CardTitle>
-            <CardDescription>You made 265 sales this month.</CardDescription>
+            <CardTitle className="font-headline">{t('overview.recentSales')}</CardTitle>
+            <CardDescription>{t('overview.salesThisMonth')}</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="h-[200px] w-full">

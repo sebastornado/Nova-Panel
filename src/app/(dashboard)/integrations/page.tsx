@@ -1,6 +1,10 @@
+
+"use client";
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Image from "next/image"
+import { useLanguage } from "@/context/language-context";
 
 const integrations = [
     { name: 'Salesforce', description: 'Sync your customer data with Salesforce.', logo: 'https://placehold.co/48x48.png', hint: 'crm logo' },
@@ -12,11 +16,12 @@ const integrations = [
 ]
 
 export default function IntegrationsPage() {
+    const { t } = useLanguage();
     return (
         <div className="flex flex-col gap-4">
             <div>
-                <h1 className="text-lg font-semibold md:text-2xl font-headline">Integrations</h1>
-                <p className="text-muted-foreground">Connect NovaPanel with your favorite tools.</p>
+                <h1 className="text-lg font-semibold md:text-2xl font-headline">{t('integrations.title')}</h1>
+                <p className="text-muted-foreground">{t('integrations.description')}</p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {integrations.map((integration) => (
@@ -29,7 +34,7 @@ export default function IntegrationsPage() {
                             </div>
                         </CardHeader>
                         <CardContent>
-                            <Button className="w-full">Connect</Button>
+                            <Button className="w-full">{t('integrations.connect')}</Button>
                         </CardContent>
                     </Card>
                 ))}

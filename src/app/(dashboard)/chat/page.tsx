@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Search, SendHorizonal } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/context/language-context';
 
 const users = [
     {
@@ -70,6 +71,7 @@ type User = typeof users[0];
 type Message = User['messages'][0];
 
 export default function ChatPage() {
+    const { t } = useLanguage();
     const [selectedUser, setSelectedUser] = useState<User>(users[0]);
     const [messages, setMessages] = useState<Message[]>(selectedUser.messages);
     const [newMessage, setNewMessage] = useState('');
@@ -95,15 +97,15 @@ export default function ChatPage() {
     return (
         <div className="flex flex-col h-[calc(100vh-80px)]">
              <div>
-                <h1 className="text-lg font-semibold md:text-2xl font-headline">Support Chat</h1>
-                <p className="text-muted-foreground">Communicate directly with your users.</p>
+                <h1 className="text-lg font-semibold md:text-2xl font-headline">{t('chat.title')}</h1>
+                <p className="text-muted-foreground">{t('chat.description')}</p>
             </div>
             <Card className="mt-4 grid flex-1 grid-cols-1 md:grid-cols-[300px_1fr] lg:grid-cols-[350px_1fr] p-0">
                 <div className="flex flex-col border-r">
                     <div className="p-4 border-b">
                          <div className="relative">
                             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                            <Input placeholder="Search conversations..." className="pl-8" />
+                            <Input placeholder={t('chat.searchPlaceholder')} className="pl-8" />
                         </div>
                     </div>
                     <div className="flex-1 overflow-y-auto">
@@ -137,7 +139,7 @@ export default function ChatPage() {
                             </Avatar>
                             <div>
                                 <p className="font-semibold">{selectedUser.name}</p>
-                                <p className="text-xs text-muted-foreground">{selectedUser.online ? 'Online' : 'Offline'}</p>
+                                <p className="text-xs text-muted-foreground">{selectedUser.online ? t('chat.online') : t('chat.offline')}</p>
                             </div>
                         </div>
                         <div className="flex-1 overflow-y-auto p-6 space-y-4">
@@ -165,7 +167,7 @@ export default function ChatPage() {
                         <div className="p-4 border-t">
                             <div className="relative">
                                 <Input 
-                                    placeholder="Type a message..." 
+                                    placeholder={t('chat.typeMessagePlaceholder')}
                                     className="pr-12" 
                                     value={newMessage}
                                     onChange={(e) => setNewMessage(e.target.value)}
@@ -179,7 +181,7 @@ export default function ChatPage() {
                         </>
                     ) : (
                         <div className="flex flex-1 items-center justify-center">
-                            <p className="text-muted-foreground">Select a conversation to start chatting</p>
+                            <p className="text-muted-foreground">{t('chat.selectConversation')}</p>
                         </div>
                     )}
                 </div>

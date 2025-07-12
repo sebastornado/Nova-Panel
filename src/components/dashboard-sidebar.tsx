@@ -19,25 +19,27 @@ import {
 import { cn } from "@/lib/utils";
 import { NovaPanelLogo } from "./icons";
 import { Badge } from "./ui/badge";
-
-const navItems = [
-  { href: "/", icon: Home, label: "Overview" },
-  { href: "/users", icon: Users, label: "Users" },
-  { href: "/chat", icon: MessageSquare, label: "Chat" },
-  { href: "/feed", icon: Rss, label: "Feed" },
-  { href: "/documentation", icon: BookText, label: "Documentation" },
-  { href: "/billing", icon: Package, label: "Billing" },
-  { href: "/reports", icon: LineChart, label: "Reporting" },
-  { href: "/integrations", icon: Puzzle, label: "Integrations" },
-];
-
-const secondaryNavItems = [
-    { href: "/resources", icon: LifeBuoy, label: "Resources" },
-    { href: "/settings", icon: Settings, label: "Settings" },
-]
+import { useLanguage } from "@/context/language-context";
 
 export function DashboardSidebar() {
   const pathname = usePathname();
+  const { t } = useLanguage();
+
+  const navItems = [
+    { href: "/", icon: Home, label: t("sidebar.overview") },
+    { href: "/users", icon: Users, label: t("sidebar.users") },
+    { href: "/chat", icon: MessageSquare, label: t("sidebar.chat") },
+    { href: "/feed", icon: Rss, label: t("sidebar.feed") },
+    { href: "/documentation", icon: BookText, label: t("sidebar.documentation") },
+    { href: "/billing", icon: Package, label: t("sidebar.billing") },
+    { href: "/reports", icon: LineChart, label: t("sidebar.reporting") },
+    { href: "/integrations", icon: Puzzle, label: t("sidebar.integrations") },
+  ];
+  
+  const secondaryNavItems = [
+      { href: "/resources", icon: LifeBuoy, label: t("sidebar.resources") },
+      { href: "/settings", icon: Settings, label: t("sidebar.settings") },
+  ]
 
   return (
     <div className="hidden border-r bg-card md:block">

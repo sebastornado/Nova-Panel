@@ -1,9 +1,11 @@
+
 "use client"
 
 import { useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import { useLanguage } from "@/context/language-context";
 
 const faqData = [
   {
@@ -33,6 +35,7 @@ const faqData = [
 ];
 
 export default function ResourcesPage() {
+  const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredFaqs = faqData.filter(faq =>
@@ -43,14 +46,14 @@ export default function ResourcesPage() {
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <h1 className="text-lg font-semibold md:text-2xl font-headline">Resources & FAQs</h1>
-        <p className="text-muted-foreground">Find guides and answers to frequently asked questions.</p>
+        <h1 className="text-lg font-semibold md:text-2xl font-headline">{t('resources.title')}</h1>
+        <p className="text-muted-foreground">{t('resources.description')}</p>
       </div>
 
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
         <Input
-          placeholder="Search resources..."
+          placeholder={t('resources.searchPlaceholder')}
           className="pl-10 text-base py-6"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -70,8 +73,8 @@ export default function ResourcesPage() {
 
       {filteredFaqs.length === 0 && (
         <div className="text-center text-muted-foreground py-10">
-          <p>No results found for "{searchTerm}"</p>
-          <p className="text-sm">Try searching for a different keyword.</p>
+          <p>{t('resources.noResults')} "{searchTerm}"</p>
+          <p className="text-sm">{t('resources.tryDifferentKeyword')}</p>
         </div>
       )}
 

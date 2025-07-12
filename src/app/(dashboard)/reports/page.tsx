@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
@@ -17,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useLanguage } from "@/context/language-context";
 
 const chartData = [
   { month: "January", users: 186 },
@@ -35,15 +37,16 @@ const chartConfig = {
 }
 
 export default function ReportsPage() {
+  const { t } = useLanguage();
   return (
     <Tabs defaultValue="user_activity">
       <div className="flex items-center">
-        <h1 className="text-lg font-semibold md:text-2xl font-headline">Reports</h1>
+        <h1 className="text-lg font-semibold md:text-2xl font-headline">{t('reports.title')}</h1>
         <div className="ml-auto flex items-center gap-2">
           <TabsList>
-            <TabsTrigger value="user_activity">User Activity</TabsTrigger>
-            <TabsTrigger value="product_usage">Product Usage</TabsTrigger>
-            <TabsTrigger value="revenue">Revenue</TabsTrigger>
+            <TabsTrigger value="user_activity">{t('reports.userActivityTab')}</TabsTrigger>
+            <TabsTrigger value="product_usage">{t('reports.productUsageTab')}</TabsTrigger>
+            <TabsTrigger value="revenue">{t('reports.revenueTab')}</TabsTrigger>
           </TabsList>
         </div>
       </div>
@@ -51,17 +54,17 @@ export default function ReportsPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
-              <CardTitle>New User Sign-ups</CardTitle>
-              <CardDescription>A summary of new users in the last 6 months.</CardDescription>
+              <CardTitle>{t('reports.newSignups')}</CardTitle>
+              <CardDescription>{t('reports.newSignupsDescription')}</CardDescription>
             </div>
             <Select>
               <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Last 6 months" />
+                <SelectValue placeholder={t('reports.last6Months')} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="6m">Last 6 months</SelectItem>
-                <SelectItem value="3m">Last 3 months</SelectItem>
-                <SelectItem value="1m">Last 30 days</SelectItem>
+                <SelectItem value="6m">{t('reports.last6Months')}</SelectItem>
+                <SelectItem value="3m">{t('reports.last3Months')}</SelectItem>
+                <SelectItem value="1m">{t('reports.last30Days')}</SelectItem>
               </SelectContent>
             </Select>
           </CardHeader>
@@ -92,12 +95,12 @@ export default function ReportsPage() {
       </TabsContent>
       <TabsContent value="product_usage">
         <div className="flex items-center justify-center h-96">
-            <p className="text-muted-foreground">Product usage report coming soon.</p>
+            <p className="text-muted-foreground">{t('reports.productUsageComingSoon')}</p>
         </div>
       </TabsContent>
       <TabsContent value="revenue">
       <div className="flex items-center justify-center h-96">
-            <p className="text-muted-foreground">Revenue report coming soon.</p>
+            <p className="text-muted-foreground">{t('reports.revenueComingSoon')}</p>
         </div>
       </TabsContent>
     </Tabs>
