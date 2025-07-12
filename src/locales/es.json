@@ -11,7 +11,8 @@
     "reporting": "Informes",
     "integrations": "Integraciones",
     "resources": "Recursos",
-    "settings": "Configuración"
+    "settings": "Configuración",
+    "tickets": "Tickets"
   },
   "header": {
     "searchPlaceholder": "Buscar...",
@@ -216,5 +217,31 @@
     "publicKeyLabel": "Clave Pública",
     "secretKeyLabel": "Clave Secreta",
     "generateNewKey": "Generar Nueva Clave"
+  },
+  "tickets": {
+    "title": "Tickets de Soporte",
+    "description": "Gestiona las consultas y solicitudes de soporte de los clientes.",
+    "inProgressTab": "En Progreso",
+    "completedTab": "Completados",
+    "search": "Buscar",
+    "newTicket": "Nuevo Ticket",
+    "idColumn": "ID Ticket",
+    "customerColumn": "Cliente",
+    "subjectColumn": "Asunto",
+    "statusColumn": "Estado",
+    "priorityColumn": "Prioridad",
+    "lastUpdatedColumn": "Última Actualización",
+    "statusOpen": "Abierto",
+    "statusInProgress": "En Progreso",
+    "statusOnHold": "En Espera",
+    "statusCompleted": "Completado",
+    "priorityHigh": "Alta",
+    "priorityMedium": "Media",
+    "priorityLow": "Baja",
+    "viewTicket": "Ver Ticket",
+    "closeTicket": "Cerrar Ticket",
+    "ticket": "Ticket",
+    "typeReplyPlaceholder": "Escribe tu respuesta aquí...",
+    "sendReply": "Enviar Respuesta"
   }
 }

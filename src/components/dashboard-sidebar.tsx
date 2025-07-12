@@ -15,6 +15,7 @@ import {
   Rss,
   BookText,
   Briefcase,
+  Ticket,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -31,6 +32,7 @@ export function DashboardSidebar() {
     { href: "/users", icon: Users, label: t("sidebar.users") },
     { href: "/teams", icon: Briefcase, label: t("sidebar.teams") },
     { href: "/chat", icon: MessageSquare, label: t("sidebar.chat") },
+    { href: "/tickets", icon: Ticket, label: t("sidebar.tickets") },
     { href: "/feed", icon: Rss, label: t("sidebar.feed") },
     { href: "/documentation", icon: BookText, label: t("sidebar.documentation") },
     { href: "/billing", icon: Package, label: t("sidebar.billing") },

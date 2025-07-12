@@ -11,7 +11,8 @@
     "reporting": "Reporting",
     "integrations": "Integrations",
     "resources": "Resources",
-    "settings": "Settings"
+    "settings": "Settings",
+    "tickets": "Tickets"
   },
   "header": {
     "searchPlaceholder": "Search...",
@@ -216,5 +217,31 @@
     "publicKeyLabel": "Public Key",
     "secretKeyLabel": "Secret Key",
     "generateNewKey": "Generate New Key"
+  },
+  "tickets": {
+    "title": "Support Tickets",
+    "description": "Manage customer inquiries and support requests.",
+    "inProgressTab": "In Progress",
+    "completedTab": "Completed",
+    "search": "Search",
+    "newTicket": "New Ticket",
+    "idColumn": "Ticket ID",
+    "customerColumn": "Customer",
+    "subjectColumn": "Subject",
+    "statusColumn": "Status",
+    "priorityColumn": "Priority",
+    "lastUpdatedColumn": "Last Updated",
+    "statusOpen": "Open",
+    "statusInProgress": "In Progress",
+    "statusOnHold": "On Hold",
+    "statusCompleted": "Completed",
+    "priorityHigh": "High",
+    "priorityMedium": "Medium",
+    "priorityLow": "Low",
+    "viewTicket": "View Ticket",
+    "closeTicket": "Close Ticket",
+    "ticket": "Ticket",
+    "typeReplyPlaceholder": "Type your reply here...",
+    "sendReply": "Send Reply"
   }
 }
