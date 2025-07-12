@@ -63,7 +63,11 @@
     "ticketsResolved": "Tickets Resolved",
     "ticketsResolvedDescription": "Tickets you resolved in the last 7 days.",
     "responseTime": "First Response Time (SLA)",
-    "responseTimeDescription": "Your first response time compliance."
+    "responseTimeDescription": "Your first response time compliance.",
+    "legendUnder1h": "<1h",
+    "legend1to4h": "1-4h",
+    "legend4to8h": "4-8h",
+    "legendOver8h": ">8h"
   },
   "users": {
     "title": "Users",

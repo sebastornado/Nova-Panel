@@ -63,7 +63,11 @@
     "ticketsResolved": "Tickets Resueltos",
     "ticketsResolvedDescription": "Tickets que resolviste en los últimos 7 días.",
     "responseTime": "Tiempo de Primera Respuesta (SLA)",
-    "responseTimeDescription": "Tu cumplimiento del tiempo de primera respuesta."
+    "responseTimeDescription": "Tu cumplimiento del tiempo de primera respuesta.",
+    "legendUnder1h": "<1h",
+    "legend1to4h": "1-4h",
+    "legend4to8h": "4-8h",
+    "legendOver8h": ">8h"
   },
   "users": {
     "title": "Usuarios",

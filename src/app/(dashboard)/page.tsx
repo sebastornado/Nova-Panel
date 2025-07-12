@@ -64,10 +64,10 @@ const ticketResolutionConfig = {
 };
 
 const responseTimeData = [
-  { name: '>8h', value: 10, fill: "hsl(var(--destructive))" },
+  { name: 'Over 8h', value: 10, fill: "hsl(var(--destructive))" },
   { name: '4-8h', value: 15, fill: "hsl(var(--secondary))" },
   { name: '1-4h', value: 25, fill: "hsl(var(--accent))" },
-  { name: '<1h', value: 50, fill: "hsl(var(--primary))" },
+  { name: 'Under 1h', value: 50, fill: "hsl(var(--primary))" },
 ];
 
 export default function OverviewPage() {
@@ -255,7 +255,12 @@ export default function OverviewPage() {
             </CardHeader>
             <CardContent className="flex-1 pb-0">
                <ChartContainer
-                config={{}}
+                config={{
+                    "Under 1h": { label: t('overview.legendUnder1h'), color: "hsl(var(--primary))" },
+                    "1-4h": { label: t('overview.legend1to4h'), color: "hsl(var(--accent))" },
+                    "4-8h": { label: t('overview.legend4to8h'), color: "hsl(var(--secondary))" },
+                    "Over 8h": { label: t('overview.legendOver8h'), color: "hsl(var(--destructive))" },
+                }}
                 className="mx-auto aspect-square h-[250px]"
               >
                 <RadialBarChart
