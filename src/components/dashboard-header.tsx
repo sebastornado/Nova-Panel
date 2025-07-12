@@ -39,6 +39,10 @@ const themes = [
     { name: "Orange", value: "orange", color: "bg-orange-500" },
 ];
 
+const handleColorChange = (theme: string) => {
+    document.documentElement.setAttribute('data-theme', theme);
+};
+
 
 export function DashboardHeader() {
   const { setTheme } = useTheme();
@@ -167,7 +171,7 @@ export function DashboardHeader() {
                 <DropdownMenuLabel>{t('header.themeColor')}</DropdownMenuLabel>
                  <DropdownMenuSeparator />
                 {themes.map((themeItem) => (
-                    <DropdownMenuItem key={themeItem.name} onClick={() => setTheme(themeItem.value)}>
+                    <DropdownMenuItem key={themeItem.name} onClick={() => handleColorChange(themeItem.value)}>
                         <div className="flex items-center gap-2">
                            <div className={`h-4 w-4 rounded-full ${themeItem.color}`} />
                            <span>{t(`header.${themeItem.value}`)}</span>

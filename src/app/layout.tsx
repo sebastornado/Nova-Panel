@@ -21,9 +21,8 @@ export default function RootLayout({
       <body className="font-body antialiased" suppressHydrationWarning>
         <LanguageProvider>
           <ThemeProvider
-            attribute="data-theme"
-            defaultTheme="indigo"
-            themes={['light', 'dark', 'indigo', 'rose', 'blue', 'green', 'orange']}
+            attribute="class"
+            defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
