@@ -24,46 +24,23 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { NovaPanelLogo } from "./icons";
-import { useEffect, useState } from "react";
 
 const themes = [
-    { name: "Indigo", color: "bg-indigo-500", theme: "theme-indigo" },
-    { name: "Rose", color: "bg-rose-500", theme: "theme-rose" },
-    { name: "Blue", color: "bg-blue-500", theme: "theme-blue" },
-    { name: "Green", color: "bg-green-500", theme: "theme-green" },
-    { name: "Orange", color: "bg-orange-500", theme: "theme-orange" },
+    { name: "Indigo", value: "indigo", color: "bg-indigo-500" },
+    { name: "Rose", value: "rose", color: "bg-rose-500" },
+    { name: "Blue", value: "blue", color: "bg-blue-500" },
+    { name: "Green", value: "green", color: "bg-green-500" },
+    { name: "Orange", value: "orange", color: "bg-orange-500" },
 ];
 
 
 export function DashboardHeader() {
   const { setTheme } = useTheme();
-  const [appTheme, setAppTheme] = useState('theme-indigo');
-
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("app-theme") || "theme-indigo";
-    setAppTheme(storedTheme);
-  }, []);
-
-  useEffect(() => {
-    const body = document.body;
-    const existingThemes = Array.from(body.classList).filter(c => c.startsWith('theme-'));
-    body.classList.remove(...existingThemes);
-    body.classList.add(appTheme);
-  }, [appTheme]);
-
-  const handleAppThemeChange = (theme: string) => {
-    setAppTheme(theme);
-    localStorage.setItem("app-theme", theme);
-  }
-
 
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-card px-4 lg:h-[60px] lg:px-6">
@@ -188,7 +165,7 @@ export function DashboardHeader() {
                 <DropdownMenuLabel>Theme Color</DropdownMenuLabel>
                  <DropdownMenuSeparator />
                 {themes.map((themeItem) => (
-                    <DropdownMenuItem key={themeItem.name} onClick={() => handleAppThemeChange(themeItem.theme)}>
+                    <DropdownMenuItem key={themeItem.name} onClick={() => setTheme(themeItem.value)}>
                         <div className="flex items-center gap-2">
                            <div className={`h-4 w-4 rounded-full ${themeItem.color}`} />
                            <span>{themeItem.name}</span>
