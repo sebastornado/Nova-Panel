@@ -13,6 +13,8 @@ const integrations = [
     { name: 'Google Analytics', description: 'Track user behavior with Google Analytics.', logo: 'https://placehold.co/48x48.png', hint: 'analytics logo' },
     { name: 'Mailchimp', description: 'Sync your contacts with Mailchimp lists.', logo: 'https://placehold.co/48x48.png', hint: 'email marketing' },
     { name: 'Stripe', description: 'Manage payments and subscriptions with Stripe.', logo: 'https://placehold.co/48x48.png', hint: 'payment gateway' },
+    { name: 'Azure', description: 'Host your backend services on Microsoft Azure.', logo: 'https://placehold.co/48x48.png', hint: 'cloud service' },
+    { name: 'Autotask', description: 'Manage your PSA and ticketing with Autotask.', logo: 'https://placehold.co/48x48.png', hint: 'psa tool' },
 ]
 
 export default function IntegrationsPage() {
@@ -23,7 +25,7 @@ export default function IntegrationsPage() {
                 <h1 className="text-lg font-semibold md:text-2xl font-headline">{t('integrations.title')}</h1>
                 <p className="text-muted-foreground">{t('integrations.description')}</p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {integrations.map((integration) => (
                     <Card key={integration.name}>
                         <CardHeader className="flex flex-row items-start gap-4 space-y-0">
