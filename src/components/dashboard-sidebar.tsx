@@ -11,6 +11,7 @@ import {
   Settings,
   Puzzle,
   MessageSquare,
+  LifeBuoy,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -26,6 +27,11 @@ const navItems = [
   { href: "/integrations", icon: Puzzle, label: "Integrations" },
 ];
 
+const secondaryNavItems = [
+    { href: "/resources", icon: LifeBuoy, label: "Resources" },
+    { href: "/settings", icon: Settings, label: "Settings" },
+]
+
 export function DashboardSidebar() {
   const pathname = usePathname();
 
@@ -38,7 +44,7 @@ export function DashboardSidebar() {
             <span className="font-headline text-lg">NovaPanel</span>
           </Link>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 overflow-y-auto">
           <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
               {navItems.map((item) => (
                 <Link
@@ -55,24 +61,22 @@ export function DashboardSidebar() {
               ))}
           </nav>
         </div>
-        <div className="mt-auto p-4">
-            <div className="flex flex-col gap-2 rounded-lg border p-4 text-center">
-                <p className="text-sm font-medium">Upgrade to Pro</p>
-                <p className="text-xs text-muted-foreground">Unlock all features and get unlimited access to our support team.</p>
-                <Link href="#" className="mt-2 rounded-md bg-primary px-3 py-2 text-xs font-medium text-primary-foreground hover:bg-primary/90">Upgrade</Link>
-            </div>
-          <div className="mt-4">
-             <Link
-                  href="/settings"
-                  className={cn(
-                    "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
-                    pathname === "/settings" && "bg-muted text-primary"
-                  )}
-                >
-                  <Settings className="h-4 w-4" />
-                  Settings
-                </Link>
-          </div>
+        <div className="mt-auto p-4 space-y-4">
+            <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
+                 {secondaryNavItems.map((item) => (
+                    <Link
+                    key={item.href}
+                    href={item.href}
+                    className={cn(
+                        "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
+                        pathname.startsWith(item.href) && "bg-muted text-primary"
+                    )}
+                    >
+                    <item.icon className="h-4 w-4" />
+                    {item.label}
+                    </Link>
+                ))}
+            </nav>
         </div>
       </div>
     </div>
