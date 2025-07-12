@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -9,6 +10,7 @@ import {
   LineChart,
   Settings,
   Puzzle,
+  MessageSquare,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -18,6 +20,7 @@ import { Badge } from "./ui/badge";
 const navItems = [
   { href: "/", icon: Home, label: "Overview" },
   { href: "/users", icon: Users, label: "Users" },
+  { href: "/chat", icon: MessageSquare, label: "Chat" },
   { href: "/billing", icon: Package, label: "Billing" },
   { href: "/reports", icon: LineChart, label: "Reporting" },
   { href: "/integrations", icon: Puzzle, label: "Integrations" },
