@@ -58,11 +58,11 @@ export default function UserProfilePage({ params: { email } }: { params: { email
     return Math.floor(seconds) + " seconds ago";
   };
 
-  const getTicketBadgeVariant = (status: string) => {
+  const getTicketBadgeVariant = (status: string): "destructive" | "positive" | "default" | "secondary" | "outline" | null | undefined => {
     switch (status) {
         case 'Open': return 'destructive';
         case 'In Progress': return 'default';
-        case 'Closed': return 'secondary';
+        case 'Closed': return 'positive';
         default: return 'outline';
     }
   }
@@ -97,7 +97,7 @@ export default function UserProfilePage({ params: { email } }: { params: { email
                     </Avatar>
                     <CardTitle>{user.name}</CardTitle>
                     <CardDescription className="flex items-center gap-2 mt-1">
-                        <Badge variant={user.status === 'Active' ? 'default' : 'secondary'}>{t(`users.${user.status.toLowerCase()}Status`)}</Badge>
+                        <Badge variant={user.status === 'Active' ? 'positive' : 'secondary'}>{t(`users.${user.status.toLowerCase()}Status`)}</Badge>
                         <Badge variant="outline">{t(`users.${user.role.toLowerCase()}Role`)}</Badge>
                     </CardDescription>
                 </CardContent>

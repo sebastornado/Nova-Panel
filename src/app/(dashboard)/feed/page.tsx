@@ -116,7 +116,7 @@ export default function FeedPage() {
                 <CardContent className="p-6">
                     <div className="flex gap-4">
                         <div className="flex flex-col items-center gap-1">
-                            <Button variant="ghost" size="icon" className="h-8 w-8">
+                            <Button variant="ghost" size="icon" className="h-8 w-8 text-primary">
                                 <ArrowUp className="h-5 w-5" />
                             </Button>
                             <span className="font-bold text-lg">{post.votes}</span>

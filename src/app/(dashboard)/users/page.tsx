@@ -192,7 +192,7 @@ export default function UsersPage() {
                     <Badge variant="outline">{t(`users.${user.role.toLowerCase()}Role`)}</Badge>
                   </TableCell>
                   <TableCell className="hidden md:table-cell">
-                    <Badge variant={user.status === 'Active' ? 'default' : 'secondary'}>{t(`users.${user.status.toLowerCase()}Status`)}</Badge>
+                    <Badge variant={user.status === 'Active' ? 'positive' : 'secondary'}>{t(`users.${user.status.toLowerCase()}Status`)}</Badge>
                   </TableCell>
                   <TableCell>
                     <DropdownMenu>

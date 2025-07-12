@@ -139,7 +139,7 @@ export default function ChatPage() {
                             </Avatar>
                             <div>
                                 <p className="font-semibold">{selectedUser.name}</p>
-                                <p className="text-xs text-muted-foreground">{selectedUser.online ? t('chat.online') : t('chat.offline')}</p>
+                                <p className="text-xs text-muted-foreground">{selectedUser.online ? <span className="text-green-500">{t('chat.online')}</span> : t('chat.offline')}</p>
                             </div>
                         </div>
                         <div className="flex-1 overflow-y-auto p-6 space-y-4">

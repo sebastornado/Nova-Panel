@@ -95,7 +95,7 @@ export default function BillingPage() {
                                     <TableCell>{invoice.date}</TableCell>
                                     <TableCell>{invoice.amount}</TableCell>
                                     <TableCell>
-                                        <Badge variant={invoice.status === 'Paid' ? 'default' : 'destructive'}>{getStatusText(invoice.status)}</Badge>
+                                        <Badge variant={invoice.status === 'Paid' ? 'positive' : 'destructive'}>{getStatusText(invoice.status)}</Badge>
                                     </TableCell>
                                     <TableCell className="text-right">
                                         <Button variant="outline" size="icon">
