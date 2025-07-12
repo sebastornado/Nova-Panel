@@ -9,20 +9,27 @@ export function NovaPanelLogo(props: SVGProps<SVGSVGElement>) {
       viewBox="0 0 24 24"
       {...props}
     >
-      <g fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 21.5a9.5 9.5 0 1 0-9.5-9.5A9.51 9.51 0 0 0 12 21.5Z"
-        />
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M15.75 10.25a.75.75 0 0 1-1.5 0v-2.5a2 2 0 0 0-4 0v2.5a.75.75 0 0 1-1.5 0v-2.5a3.5 3.5 0 0 1 7 0Z"
-        />
-        <path
-          d="M12 13.25a2.5 2.5 0 0 0-2.34 1.55l-1.06.35a3.5 3.5 0 0 0 4.21 4.21l.35-1.06A2.5 2.5 0 0 0 12 13.25Z"
-        />
+      <g 
+        fill="none" 
+        stroke="hsl(var(--primary))" 
+        strokeWidth="1.5" 
+        strokeLinecap="round" 
+        strokeLinejoin="round"
+      >
+        {/* Robot Head */}
+        <rect x="5" y="8" width="14" height="10" rx="2" />
+        
+        {/* Eyes as Gears */}
+        <circle cx="9.5" cy="13" r="1.5" />
+        <path d="M9.5 11.5v-1m0 6v-1m-1.5-2h-1m6 0h-1m-2.9-2.9l-.7-.7m4.3 4.3l-.7-.7m-2.9 0l-.7.7m4.3-4.3l-.7.7" />
+        
+        <circle cx="14.5" cy="13" r="1.5" />
+        <path d="M14.5 11.5v-1m0 6v-1m-1.5-2h-1m6 0h-1m-2.9-2.9l-.7-.7m4.3 4.3l-.7-.7m-2.9 0l-.7.7m4.3-4.3l-.7.7" />
+
+        {/* Antenna */}
+        <path d="M12 8v-2" />
+        <path d="M12 4h.01" />
+
       </g>
     </svg>
   );
