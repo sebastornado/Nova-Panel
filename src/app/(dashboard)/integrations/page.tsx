@@ -8,9 +8,10 @@ import { useLanguage } from "@/context/language-context";
 
 const AzureLogo = () => (
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="rounded-lg">
-        <path d="M22.56 12.24L10.32 35.76H2.64L22.56 12.24Z" fill="#0072C6"/>
-        <path d="M22.56 12.24L32.16 35.76H45.36L22.56 12.24Z" fill="#0072C6"/>
-        <path d="M12 35.76H32.16L18.72 23.04L12 35.76Z" fill="#0072C6"/>
+        <path d="M28.823 20.706L18.618 36h-7.236L28.823 20.706z" fill="#0072c6" />
+        <path d="M28.823 20.706L18.618 36h7.235l11.412-15.294h-8.442z" fill="#32c5ff" />
+        <path d="M18.823 12L7.41 36h7.236l2.353-8.118l11.824-15.882H18.823z" fill="#88d8ff" />
+        <path d="M29.176 12h11.412L28.823 36h-7.235L29.176 12z" fill="#0072c6" />
     </svg>
 )
 
