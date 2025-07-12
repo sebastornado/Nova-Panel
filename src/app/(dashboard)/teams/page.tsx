@@ -20,8 +20,8 @@ const teamsData = [
         description: 'General customer inquiries',
         members: [
             { name: 'Admin', avatar: 'https://placehold.co/100x100.png', hint: 'user avatar' },
-            { name: 'Olivia Martin', avatar: 'https://placehold.co/100x100.png', hint: 'woman portrait' },
-            { name: 'Jackson Lee', avatar: 'https://placehold.co/100x100.png', hint: 'man portrait' },
+            { name: 'Olivia Martin', avatar: 'https://placehold.co/100x100/A8D8B9/424242.png', hint: 'woman portrait' },
+            { name: 'Jackson Lee', avatar: 'https://placehold.co/100x100/E6B3A3/424242.png', hint: 'man portrait' },
         ],
         messages: [
             { id: 1, text: 'Team, new ticket TKT-003 about a password reset is in progress.', sender: 'Admin', time: '10:30 AM' },
@@ -35,7 +35,7 @@ const teamsData = [
         description: 'Payment and subscription issues',
         members: [
             { name: 'Admin', avatar: 'https://placehold.co/100x100.png', hint: 'user avatar' },
-            { name: 'Sofia Davis', avatar: 'https://placehold.co/100x100.png', hint: 'woman professional' },
+            { name: 'Sofia Davis', avatar: 'https://placehold.co/100x100/D4B4E4/424242.png', hint: 'woman professional' },
         ],
         messages: [
             { id: 1, text: 'We have a billing dispute on INV-002, can someone look into it?', sender: 'Admin', time: 'Yesterday' },
@@ -48,8 +48,8 @@ const teamsData = [
         description: 'API and third-party integrations',
         members: [
             { name: 'Admin', avatar: 'https://placehold.co/100x100.png', hint: 'user avatar' },
-            { name: 'William Kim', avatar: 'https://placehold.co/100x100.png', hint: 'man glasses' },
-            { name: 'Isabella Nguyen', avatar: 'https://placehold.co/100x100.png', hint: 'woman smiling' },
+            { name: 'William Kim', avatar: 'https://placehold.co/100x100/B3E0F2/424242.png', hint: 'man glasses' },
+            { name: 'Isabella Nguyen', avatar: 'https://placehold.co/100x100/F0E68C/424242.png', hint: 'woman smiling' },
         ],
         messages: [
             { id: 1, text: 'Has anyone seen the new Zapier integration docs?', sender: 'William Kim', time: 'Tuesday' },

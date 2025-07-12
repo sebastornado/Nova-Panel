@@ -51,11 +51,11 @@ import { useLanguage } from "@/context/language-context";
 
 
 const initialUsers = [
-  { name: 'Olivia Martin', email: 'olivia.martin@email.com', role: 'Admin', status: 'Active', avatar: 'https://placehold.co/100x100.png', hint: 'woman portrait' },
-  { name: 'Jackson Lee', email: 'jackson.lee@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100.png', hint: 'man portrait' },
-  { name: 'Isabella Nguyen', email: 'isabella.nguyen@email.com', role: 'User', status: 'Inactive', avatar: 'https://placehold.co/100x100.png', hint: 'woman smiling' },
-  { name: 'William Kim', email: 'will@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100.png', hint: 'man glasses' },
-  { name: 'Sofia Davis', email: 'sofia.davis@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100.png', hint: 'woman professional' },
+  { name: 'Olivia Martin', email: 'olivia.martin@email.com', role: 'Admin', status: 'Active', avatar: 'https://placehold.co/100x100/A8D8B9/424242.png', hint: 'woman portrait' },
+  { name: 'Jackson Lee', email: 'jackson.lee@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100/E6B3A3/424242.png', hint: 'man portrait' },
+  { name: 'Isabella Nguyen', email: 'isabella.nguyen@email.com', role: 'User', status: 'Inactive', avatar: 'https://placehold.co/100x100/F0E68C/424242.png', hint: 'woman smiling' },
+  { name: 'William Kim', email: 'will@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100/B3E0F2/424242.png', hint: 'man glasses' },
+  { name: 'Sofia Davis', email: 'sofia.davis@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100/D4B4E4/424242.png', hint: 'woman professional' },
 ]
 
 type User = {

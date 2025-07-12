@@ -55,7 +55,7 @@ import { cn } from "@/lib/utils";
 const ticketsData = [
   {
     id: 'TKT-001',
-    customer: { name: 'Olivia Martin', email: 'olivia.martin@email.com', avatar: 'https://placehold.co/100x100.png', hint: 'woman portrait' },
+    customer: { name: 'Olivia Martin', email: 'olivia.martin@email.com', avatar: 'https://placehold.co/100x100/A8D8B9/424242.png', hint: 'woman portrait' },
     subject: 'Issue with billing',
     status: 'Open',
     priority: 'High',
@@ -67,7 +67,7 @@ const ticketsData = [
   },
   {
     id: 'TKT-002',
-    customer: { name: 'Jackson Lee', email: 'jackson.lee@email.com', avatar: 'https://placehold.co/100x100.png', hint: 'man portrait' },
+    customer: { name: 'Jackson Lee', email: 'jackson.lee@email.com', avatar: 'https://placehold.co/100x100/E6B3A3/424242.png', hint: 'man portrait' },
     subject: 'Feature request: Dark mode',
     status: 'In Progress',
     priority: 'Medium',
@@ -78,7 +78,7 @@ const ticketsData = [
   },
   {
     id: 'TKT-003',
-    customer: { name: 'William Kim', email: 'will@email.com', avatar: 'https://placehold.co/100x100.png', hint: 'man glasses' },
+    customer: { name: 'William Kim', email: 'will@email.com', avatar: 'https://placehold.co/100x100/B3E0F2/424242.png', hint: 'man glasses' },
     subject: 'Cannot reset password',
     status: 'On Hold',
     priority: 'High',
@@ -89,7 +89,7 @@ const ticketsData = [
   },
   {
     id: 'TKT-004',
-    customer: { name: 'Sofia Davis', email: 'sofia.davis@email.com', avatar: 'https://placehold.co/100x100.png', hint: 'woman professional' },
+    customer: { name: 'Sofia Davis', email: 'sofia.davis@email.com', avatar: 'https://placehold.co/100x100/D4B4E4/424242.png', hint: 'woman professional' },
     subject: 'API integration question',
     status: 'Completed',
     priority: 'Low',

@@ -27,7 +27,7 @@ const initialPosts = [
     id: 2,
     author: {
       name: "Olivia Martin",
-      avatar: "https://placehold.co/100x100.png",
+      avatar: "https://placehold.co/100x100/A8D8B9/424242.png",
       hint: "woman portrait"
     },
     timestamp: "1 day ago",
@@ -39,7 +39,7 @@ const initialPosts = [
     id: 3,
     author: {
       name: "Jackson Lee",
-      avatar: "https://placehold.co/100x100.png",
+      avatar: "https://placehold.co/100x100/E6B3A3/424242.png",
       hint: "man portrait"
     },
     timestamp: "3 days ago",

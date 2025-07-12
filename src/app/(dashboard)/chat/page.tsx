@@ -15,7 +15,7 @@ const users = [
     {
         id: 1,
         name: 'Olivia Martin',
-        avatar: 'https://placehold.co/100x100.png',
+        avatar: 'https://placehold.co/100x100/A8D8B9/424242.png',
         hint: 'woman portrait',
         lastMessage: 'Hey, how are you?',
         lastMessageTime: '10:40 AM',
@@ -31,7 +31,7 @@ const users = [
     {
         id: 2,
         name: 'Jackson Lee',
-        avatar: 'https://placehold.co/100x100.png',
+        avatar: 'https://placehold.co/100x100/E6B3A3/424242.png',
         hint: 'man portrait',
         lastMessage: 'Thanks for the help!',
         lastMessageTime: 'Yesterday',
@@ -45,7 +45,7 @@ const users = [
     {
         id: 3,
         name: 'Isabella Nguyen',
-        avatar: 'https://placehold.co/100x100.png',
+        avatar: 'https://placehold.co/100x100/F0E68C/424242.png',
         hint: 'woman smiling',
         lastMessage: 'Got it, thanks!',
         lastMessageTime: 'Tuesday',
@@ -57,7 +57,7 @@ const users = [
     {
         id: 4,
         name: 'William Kim',
-        avatar: 'https://placehold.co/100x100.png',
+        avatar: 'https://placehold.co/100x100/B3E0F2/424242.png',
         hint: 'man glasses',
         lastMessage: 'See you later.',
         lastMessageTime: 'Monday',
