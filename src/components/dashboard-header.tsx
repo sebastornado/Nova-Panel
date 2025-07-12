@@ -15,7 +15,6 @@ import {
   Palette
 } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useTheme as useAppTheme } from "@/hooks/use-theme";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -33,6 +32,7 @@ import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { NovaPanelLogo } from "./icons";
+import { useEffect, useState } from "react";
 
 const themes = [
     { name: "Indigo", color: "bg-indigo-500", theme: "theme-indigo" },
@@ -44,8 +44,26 @@ const themes = [
 
 
 export function DashboardHeader() {
-  const { setTheme, theme } = useTheme();
-  const { setAppTheme } = useAppTheme();
+  const { setTheme } = useTheme();
+  const [appTheme, setAppTheme] = useState('theme-indigo');
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("app-theme") || "theme-indigo";
+    setAppTheme(storedTheme);
+  }, []);
+
+  useEffect(() => {
+    const body = document.body;
+    const existingThemes = Array.from(body.classList).filter(c => c.startsWith('theme-'));
+    body.classList.remove(...existingThemes);
+    body.classList.add(appTheme);
+  }, [appTheme]);
+
+  const handleAppThemeChange = (theme: string) => {
+    setAppTheme(theme);
+    localStorage.setItem("app-theme", theme);
+  }
+
 
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-card px-4 lg:h-[60px] lg:px-6">
@@ -170,7 +188,7 @@ export function DashboardHeader() {
                 <DropdownMenuLabel>Theme Color</DropdownMenuLabel>
                  <DropdownMenuSeparator />
                 {themes.map((themeItem) => (
-                    <DropdownMenuItem key={themeItem.name} onClick={() => setAppTheme(themeItem.theme)}>
+                    <DropdownMenuItem key={themeItem.name} onClick={() => handleAppThemeChange(themeItem.theme)}>
                         <div className="flex items-center gap-2">
                            <div className={`h-4 w-4 rounded-full ${themeItem.color}`} />
                            <span>{themeItem.name}</span>
