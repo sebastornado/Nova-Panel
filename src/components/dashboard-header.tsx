@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -62,7 +63,7 @@ export function DashboardHeader() {
             </Link>
             <Link
               href="/users"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
+              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-foreground hover:text-foreground"
             >
               <Users className="h-5 w-5" />
               Users
@@ -109,8 +110,12 @@ export function DashboardHeader() {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Settings</DropdownMenuItem>
-          <DropdownMenuItem>Support</DropdownMenuItem>
+          <Link href="/settings">
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+          </Link>
+           <Link href="/resources">
+            <DropdownMenuItem>Support</DropdownMenuItem>
+          </Link>
           <DropdownMenuSeparator />
           <DropdownMenuItem>Logout</DropdownMenuItem>
         </DropdownMenuContent>

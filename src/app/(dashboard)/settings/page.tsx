@@ -3,10 +3,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export default function SettingsPage() {
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-8">
             <div>
                 <h1 className="text-lg font-semibold md:text-2xl font-headline">Settings</h1>
                 <p className="text-muted-foreground">Manage your account and workspace settings.</p>
@@ -20,12 +21,19 @@ export default function SettingsPage() {
                 <TabsContent value="profile">
                     <Card>
                         <CardHeader>
-                            <CardTitle>Profile</CardTitle>
+                            <CardTitle>My Profile</CardTitle>
                             <CardDescription>
                                 Make changes to your public information here. Click save when you're done.
                             </CardDescription>
                         </CardHeader>
-                        <CardContent className="space-y-4">
+                        <CardContent className="space-y-6">
+                             <div className="flex items-center gap-4">
+                                <Avatar className="h-20 w-20">
+                                    <AvatarImage src="https://placehold.co/100x100.png" alt="Admin" data-ai-hint="user avatar" />
+                                    <AvatarFallback>AD</AvatarFallback>
+                                </Avatar>
+                                <Button variant="outline">Change Avatar</Button>
+                            </div>
                             <div className="space-y-2">
                                 <Label htmlFor="name">Name</Label>
                                 <Input id="name" defaultValue="Admin" />
@@ -36,7 +44,7 @@ export default function SettingsPage() {
                             </div>
                         </CardContent>
                         <CardFooter>
-                            <Button>Save changes</Button>
+                            <Button>Save Changes</Button>
                         </CardFooter>
                     </Card>
                 </TabsContent>
@@ -55,7 +63,7 @@ export default function SettingsPage() {
                             </div>
                         </CardContent>
                          <CardFooter>
-                            <Button>Save changes</Button>
+                            <Button>Save Changes</Button>
                         </CardFooter>
                     </Card>
                 </TabsContent>
