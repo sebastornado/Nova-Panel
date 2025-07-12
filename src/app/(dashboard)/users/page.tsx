@@ -49,11 +49,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 
 const initialUsers = [
-  { name: 'Olivia Martin', email: 'olivia.martin@email.com', role: 'Admin', status: 'Active', avatar: 'https://placehold.co/100x100.png' },
-  { name: 'Jackson Lee', email: 'jackson.lee@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100.png' },
-  { name: 'Isabella Nguyen', email: 'isabella.nguyen@email.com', role: 'User', status: 'Inactive', avatar: 'https://placehold.co/100x100.png' },
-  { name: 'William Kim', email: 'will@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100.png' },
-  { name: 'Sofia Davis', email: 'sofia.davis@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100.png' },
+  { name: 'Olivia Martin', email: 'olivia.martin@email.com', role: 'Admin', status: 'Active', avatar: 'https://placehold.co/100x100.png', hint: 'woman portrait' },
+  { name: 'Jackson Lee', email: 'jackson.lee@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100.png', hint: 'man portrait' },
+  { name: 'Isabella Nguyen', email: 'isabella.nguyen@email.com', role: 'User', status: 'Inactive', avatar: 'https://placehold.co/100x100.png', hint: 'woman smiling' },
+  { name: 'William Kim', email: 'will@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100.png', hint: 'man glasses' },
+  { name: 'Sofia Davis', email: 'sofia.davis@email.com', role: 'User', status: 'Active', avatar: 'https://placehold.co/100x100.png', hint: 'woman professional' },
 ]
 
 type User = {
@@ -62,6 +62,7 @@ type User = {
   role: 'Admin' | 'User';
   status: 'Active' | 'Inactive';
   avatar: string;
+  hint: string;
 };
 
 export default function UsersPage() {
@@ -69,7 +70,7 @@ export default function UsersPage() {
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [newUser, setNewUser] = useState<Omit<User, 'avatar'>>({ name: '', email: '', role: 'User', status: 'Active' });
+  const [newUser, setNewUser] = useState<Omit<User, 'avatar' | 'hint'>>({ name: '', email: '', role: 'User', status: 'Active' });
 
   const handleEditClick = (user: User) => {
     setCurrentUser({ ...user });
@@ -89,7 +90,7 @@ export default function UsersPage() {
   };
 
   const handleAddUser = () => {
-    const userToAdd: User = { ...newUser, avatar: 'https://placehold.co/100x100.png' };
+    const userToAdd: User = { ...newUser, avatar: 'https://placehold.co/100x100.png', hint: 'user avatar' };
     setUsers([...users, userToAdd]);
     setNewUser({ name: '', email: '', role: 'User', status: 'Active' });
     setIsAddDialogOpen(false);
@@ -173,7 +174,7 @@ export default function UsersPage() {
                   <TableCell className="font-medium">
                     <div className="flex items-center gap-3">
                       <Avatar className="h-9 w-9">
-                        <AvatarImage src={user.avatar} alt={user.name} data-ai-hint="user avatar" />
+                        <AvatarImage src={user.avatar} alt={user.name} data-ai-hint={user.hint} />
                         <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
                       </Avatar>
                       <div>
@@ -274,5 +275,3 @@ export default function UsersPage() {
     </div>
   )
 }
-
-    
