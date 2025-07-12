@@ -6,9 +6,10 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Search, SendHorizonal } from 'lucide-react';
+import { Search, SendHorizonal, Paperclip, Mic, Image as ImageIcon, Smile } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/context/language-context';
+import { Textarea } from '@/components/ui/textarea';
 
 const users = [
     {
@@ -164,17 +165,35 @@ export default function ChatPage() {
                                 </div>
                             ))}
                         </div>
-                        <div className="p-4 border-t">
-                            <div className="relative">
-                                <Input 
+                        <div className="p-4 border-t bg-background">
+                            <div className="flex items-center gap-2">
+                                <Textarea
                                     placeholder={t('chat.typeMessagePlaceholder')}
-                                    className="pr-12" 
                                     value={newMessage}
                                     onChange={(e) => setNewMessage(e.target.value)}
-                                    onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' && !e.shiftKey) {
+                                            e.preventDefault();
+                                            handleSendMessage();
+                                        }
+                                    }}
+                                    rows={1}
+                                    className="flex-1 resize-none bg-muted border-0 focus-visible:ring-1 focus-visible:ring-ring"
                                 />
-                                <Button size="icon" className="absolute right-1.5 top-1/2 -translate-y-1/2 h-7 w-7" onClick={handleSendMessage}>
-                                    <SendHorizonal className="h-4 w-4" />
+                                 <Button variant="ghost" size="icon">
+                                    <Paperclip className="h-5 w-5" />
+                                </Button>
+                                <Button variant="ghost" size="icon">
+                                    <Mic className="h-5 w-5" />
+                                </Button>
+                                <Button variant="ghost" size="icon">
+                                    <ImageIcon className="h-5 w-5" />
+                                </Button>
+                                <Button variant="ghost" size="icon">
+                                    <Smile className="h-5 w-5" />
+                                </Button>
+                                <Button size="icon" onClick={handleSendMessage} disabled={!newMessage.trim()}>
+                                    <SendHorizonal className="h-5 w-5" />
                                 </Button>
                             </div>
                         </div>
