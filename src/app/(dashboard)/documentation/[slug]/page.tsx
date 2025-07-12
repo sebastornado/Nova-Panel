@@ -1,7 +1,7 @@
 
 "use client";
 
-import { notFound } from "next/navigation";
+import { useParams, notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { articles } from "@/app/(dashboard)/documentation/page";
@@ -9,8 +9,10 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { ChevronLeft, List } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function ArticlePage({ params }: { params: { slug: string } }) {
-  const article = articles.find((a) => a.slug === params.slug);
+export default function ArticlePage() {
+  const params = useParams();
+  const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
+  const article = articles.find((a) => a.slug === slug);
 
   if (!article) {
     notFound();
