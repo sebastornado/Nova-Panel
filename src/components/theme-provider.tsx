@@ -11,9 +11,12 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 
   React.useEffect(() => {
     const body = document.body
-    const themes = ["theme-indigo", "theme-rose", "theme-blue", "theme-green", "theme-orange"]
-    themes.forEach((theme) => body.classList.remove(theme))
-    body.classList.add(appTheme)
+    // Get all theme classes currently on the body
+    const existingThemes = Array.from(body.classList).filter(c => c.startsWith('theme-'));
+    // Remove all of them
+    body.classList.remove(...existingThemes);
+    // Add the new one
+    body.classList.add(appTheme);
   }, [appTheme])
   
   return <NextThemesProvider {...props}>{children}</NextThemesProvider>
