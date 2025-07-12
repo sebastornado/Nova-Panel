@@ -7,21 +7,17 @@ import {
   Home,
   LineChart,
   Package,
-  Package2,
   Search,
-  ShoppingCart,
   Users,
+  Moon,
+  Sun,
+  Languages,
+  Palette
 } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useTheme as useAppTheme } from "@/hooks/use-theme";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,13 +25,28 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { NovaPanelLogo } from "./icons";
 
+const themes = [
+    { name: "Indigo", color: "bg-indigo-500", theme: "theme-indigo" },
+    { name: "Rose", color: "bg-rose-500", theme: "theme-rose" },
+    { name: "Blue", color: "bg-blue-500", theme: "theme-blue" },
+    { name: "Green", color: "bg-green-500", theme: "theme-green" },
+    { name: "Orange", color: "bg-orange-500", theme: "theme-orange" },
+];
+
+
 export function DashboardHeader() {
+  const { setTheme, theme } = useTheme();
+  const { setAppTheme } = useAppTheme();
+
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-card px-4 lg:h-[60px] lg:px-6">
       <Sheet>
@@ -97,29 +108,102 @@ export function DashboardHeader() {
           </div>
         </form>
       </div>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="secondary" size="icon" className="rounded-full">
-            <Avatar>
-              <AvatarImage src="https://placehold.co/100x100.png" alt="Admin" data-ai-hint="user avatar" />
-              <AvatarFallback>AD</AvatarFallback>
-            </Avatar>
-            <span className="sr-only">Toggle user menu</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <Link href="/settings">
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-          </Link>
-           <Link href="/resources">
-            <DropdownMenuItem>Support</DropdownMenuItem>
-          </Link>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Logout</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+
+      <div className="flex items-center gap-2">
+         <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="icon">
+                    <Bell className="h-[1.2rem] w-[1.2rem]" />
+                    <span className="sr-only">Notifications</span>
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                <DropdownMenuLabel>Notifications</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>You have a new message</DropdownMenuItem>
+                <DropdownMenuItem>Subscription expiring soon</DropdownMenuItem>
+            </DropdownMenuContent>
+        </DropdownMenu>
+
+         <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="icon">
+                    <Languages className="h-[1.2rem] w-[1.2rem]" />
+                    <span className="sr-only">Change Language</span>
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                <DropdownMenuItem>English</DropdownMenuItem>
+                <DropdownMenuItem>Español</DropdownMenuItem>
+            </DropdownMenuContent>
+        </DropdownMenu>
+
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="icon">
+                     <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                    <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                    <span className="sr-only">Toggle theme</span>
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => setTheme("light")}>
+                Light
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setTheme("dark")}>
+                Dark
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setTheme("system")}>
+                System
+                </DropdownMenuItem>
+            </DropdownMenuContent>
+        </DropdownMenu>
+        
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="icon">
+                    <Palette className="h-[1.2rem] w-[1.2rem]" />
+                    <span className="sr-only">Change Color</span>
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                <DropdownMenuLabel>Theme Color</DropdownMenuLabel>
+                 <DropdownMenuSeparator />
+                {themes.map((themeItem) => (
+                    <DropdownMenuItem key={themeItem.name} onClick={() => setAppTheme(themeItem.theme)}>
+                        <div className="flex items-center gap-2">
+                           <div className={`h-4 w-4 rounded-full ${themeItem.color}`} />
+                           <span>{themeItem.name}</span>
+                        </div>
+                    </DropdownMenuItem>
+                ))}
+            </DropdownMenuContent>
+        </DropdownMenu>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="secondary" size="icon" className="rounded-full">
+              <Avatar>
+                <AvatarImage src="https://placehold.co/100x100.png" alt="Admin" data-ai-hint="user avatar" />
+                <AvatarFallback>AD</AvatarFallback>
+              </Avatar>
+              <span className="sr-only">Toggle user menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <Link href="/settings">
+              <DropdownMenuItem>Settings</DropdownMenuItem>
+            </Link>
+            <Link href="/resources">
+              <DropdownMenuItem>Support</DropdownMenuItem>
+            </Link>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Logout</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
     </header>
   );
 }
