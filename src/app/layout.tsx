@@ -20,7 +20,7 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="indigo"
-          themes={['indigo', 'rose', 'blue', 'green', 'orange']}
+          themes={['light', 'dark', 'indigo', 'rose', 'blue', 'green', 'orange']}
           enableSystem
           disableTransitionOnChange
         >
