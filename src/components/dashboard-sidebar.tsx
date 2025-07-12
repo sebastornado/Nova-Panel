@@ -14,6 +14,7 @@ import {
   LifeBuoy,
   Rss,
   BookText,
+  Briefcase,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -28,6 +29,7 @@ export function DashboardSidebar() {
   const navItems = [
     { href: "/", icon: Home, label: t("sidebar.overview") },
     { href: "/users", icon: Users, label: t("sidebar.users") },
+    { href: "/teams", icon: Briefcase, label: t("sidebar.teams") },
     { href: "/chat", icon: MessageSquare, label: t("sidebar.chat") },
     { href: "/feed", icon: Rss, label: t("sidebar.feed") },
     { href: "/documentation", icon: BookText, label: t("sidebar.documentation") },

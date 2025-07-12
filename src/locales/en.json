@@ -3,6 +3,7 @@
   "sidebar": {
     "overview": "Overview",
     "users": "Users",
+    "teams": "Teams",
     "chat": "Chat",
     "feed": "Feed",
     "documentation": "Documentation",
@@ -126,6 +127,15 @@
     "selectConversation": "Select a conversation to start chatting",
     "online": "Online",
     "offline": "Offline"
+  },
+  "teams": {
+    "title": "Teams",
+    "description": "Collaborate with your IT support teams.",
+    "myTeams": "My Teams",
+    "teamChat": "Team Chat",
+    "typeMessagePlaceholder": "Message your team...",
+    "members": "Members",
+    "selectTeam": "Select a team to view the chat."
   },
   "feed": {
     "title": "Team Feed",

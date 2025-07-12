@@ -3,6 +3,7 @@
   "sidebar": {
     "overview": "Resumen",
     "users": "Usuarios",
+    "teams": "Equipos",
     "chat": "Chat",
     "feed": "Feed",
     "documentation": "Documentación",
@@ -126,6 +127,15 @@
     "selectConversation": "Selecciona una conversación para empezar a chatear",
     "online": "En línea",
     "offline": "Desconectado"
+  },
+  "teams": {
+    "title": "Equipos",
+    "description": "Colabora con tus equipos de soporte de TI.",
+    "myTeams": "Mis Equipos",
+    "teamChat": "Chat de Equipo",
+    "typeMessagePlaceholder": "Escribe un mensaje a tu equipo...",
+    "members": "Miembros",
+    "selectTeam": "Selecciona un equipo para ver el chat."
   },
   "feed": {
     "title": "Feed del Equipo",
