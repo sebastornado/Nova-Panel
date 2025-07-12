@@ -27,6 +27,12 @@ const nextConfig: NextConfig = {
         hostname: 'images.theconversation.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.jitterbit.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
