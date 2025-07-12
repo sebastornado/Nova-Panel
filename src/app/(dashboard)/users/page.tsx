@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import {
   MoreHorizontal,
   PlusCircle,
@@ -178,7 +179,9 @@ export default function UsersPage() {
                         <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
                       </Avatar>
                       <div>
-                        {user.name}
+                        <Link href={`/users/${encodeURIComponent(user.email)}`} className="hover:underline">
+                            {user.name}
+                        </Link>
                         <div className="text-sm text-muted-foreground">{user.email}</div>
                       </div>
                     </div>
