@@ -22,6 +22,7 @@ export default function RootLayout({
           defaultTheme="indigo"
           themes={['indigo', 'rose', 'blue', 'green', 'orange']}
           enableSystem
+          disableTransitionOnChange
         >
           {children}
           <Toaster />
