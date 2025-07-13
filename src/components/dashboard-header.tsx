@@ -12,9 +12,18 @@ import {
   Moon,
   Sun,
   Languages,
-  Palette
+  Palette,
+  Briefcase,
+  MessageSquare,
+  Ticket,
+  Rss,
+  BookText,
+  Puzzle,
+  LifeBuoy,
+  Settings,
 } from "lucide-react";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -30,6 +39,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { NovaPanelLogo } from "./icons";
 import { useLanguage } from "@/context/language-context";
+import { cn } from "@/lib/utils";
 
 const themes = [
     { name: "Indigo", value: "indigo", color: "bg-indigo-500" },
@@ -39,14 +49,32 @@ const themes = [
     { name: "Orange", value: "orange", color: "bg-orange-500" },
 ];
 
-const handleColorChange = (theme: string) => {
-    document.documentElement.setAttribute('data-theme', theme);
-};
-
-
 export function DashboardHeader() {
   const { setTheme } = useTheme();
   const { t, setLanguage } = useLanguage();
+  const pathname = usePathname();
+
+  const handleColorChange = (theme: string) => {
+    document.documentElement.setAttribute('data-theme', theme);
+  };
+
+  const navItems = [
+    { href: "/", icon: Home, label: t("sidebar.overview") },
+    { href: "/users", icon: Users, label: t("sidebar.users") },
+    { href: "/teams", icon: Briefcase, label: t("sidebar.teams") },
+    { href: "/chat", icon: MessageSquare, label: t("sidebar.chat") },
+    { href: "/tickets", icon: Ticket, label: t("sidebar.tickets") },
+    { href: "/feed", icon: Rss, label: t("sidebar.feed") },
+    { href: "/documentation", icon: BookText, label: t("sidebar.documentation") },
+    { href: "/billing", icon: Package, label: t("sidebar.billing") },
+    { href: "/reports", icon: LineChart, label: t("sidebar.reporting") },
+    { href: "/integrations", icon: Puzzle, label: t("sidebar.integrations") },
+  ];
+  
+  const secondaryNavItems = [
+      { href: "/resources", icon: LifeBuoy, label: t("sidebar.resources") },
+      { href: "/settings", icon: Settings, label: t("sidebar.settings") },
+  ];
 
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-card px-4 lg:h-[60px] lg:px-6">
@@ -57,44 +85,47 @@ export function DashboardHeader() {
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="flex flex-col bg-card">
-          <nav className="grid gap-2 text-lg font-medium">
-            <Link
-              href="#"
-              className="flex items-center gap-2 text-lg font-semibold"
-            >
-              <NovaPanelLogo className="h-6 w-6" />
-              <span className="font-headline">NovaPanel</span>
-            </Link>
-            <Link
-              href="/"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-            >
-              <Home className="h-5 w-5" />
-              {t('sidebar.overview')}
-            </Link>
-            <Link
-              href="/users"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-foreground hover:text-foreground"
-            >
-              <Users className="h-5 w-5" />
-              {t('sidebar.users')}
-            </Link>
-            <Link
-              href="/billing"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-            >
-              <Package className="h-5 w-5" />
-              {t('sidebar.billing')}
-            </Link>
-            <Link
-              href="/reports"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-            >
-              <LineChart className="h-5 w-5" />
-              {t('sidebar.reporting')}
-            </Link>
-          </nav>
+        <SheetContent side="left" className="flex flex-col bg-card p-0">
+            <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
+                <Link href="/" className="flex items-center gap-2 font-semibold">
+                    <NovaPanelLogo className="h-6 w-6" />
+                    <span className="font-headline text-lg">NovaPanel</span>
+                </Link>
+            </div>
+            <div className="flex-1 overflow-y-auto">
+                <nav className="grid items-start p-2 text-base font-medium lg:p-4">
+                    {navItems.map((item) => (
+                        <Link
+                        key={item.href}
+                        href={item.href}
+                        className={cn(
+                            "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
+                            pathname === item.href && "bg-muted text-primary"
+                        )}
+                        >
+                        <item.icon className="h-4 w-4" />
+                        {item.label}
+                        </Link>
+                    ))}
+                </nav>
+            </div>
+             <div className="mt-auto p-4 space-y-4 border-t">
+                <nav className="grid items-start px-2 text-base font-medium lg:px-4">
+                    {secondaryNavItems.map((item) => (
+                        <Link
+                        key={item.href}
+                        href={item.href}
+                        className={cn(
+                            "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
+                            pathname.startsWith(item.href) && "bg-muted text-primary"
+                        )}
+                        >
+                        <item.icon className="h-4 w-4" />
+                        {item.label}
+                        </Link>
+                    ))}
+                </nav>
+            </div>
         </SheetContent>
       </Sheet>
       <div className="w-full flex-1">
@@ -104,7 +135,7 @@ export function DashboardHeader() {
             <Input
               type="search"
               placeholder={t('header.searchPlaceholder')}
-              className="w-full appearance-none bg-card pl-8 shadow-none md:w-2/3 lg:w-1/3"
+              className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
             />
           </div>
         </form>
@@ -201,7 +232,7 @@ export function DashboardHeader() {
               <DropdownMenuItem>{t('header.support')}</DropdownMenuItem>
             </Link>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="text-destructive focus:text-destructive-foreground">{t('header.logout')}</DropdownMenuItem>
+            <DropdownMenuItem className="text-red-500 focus:text-red-500">{t('header.logout')}</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

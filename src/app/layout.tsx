@@ -8,6 +8,9 @@ import { LanguageProvider } from '@/context/language-context';
 export const metadata: Metadata = {
   title: 'NovaPanel',
   description: 'The modern SaaS dashboard.',
+  icons: {
+    icon: '/icon.svg'
+  }
 };
 
 export default function RootLayout({
